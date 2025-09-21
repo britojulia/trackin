@@ -1,0 +1,10 @@
+services:
+  postgres:
+    image: 'postgres:latest'
+    container_name: postgres_trackin
+    environment:
+      - 'POSTGRES_DB=trackin'
+      - 'POSTGRES_PASSWORD=trackin'
+      - 'POSTGRES_USER=trackin'
+    ports:
+      - '5432:5432'
