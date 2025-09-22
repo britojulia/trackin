@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="forest">
+<head>
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@5/themes.css" rel="stylesheet" type="text/css" />
+    <meta charset="UTF-8">
+    <title>Track in</title>
+</head>
+<body class="flex flex-col min-h-screen">
+<!-- Header -->
+<div th:replace="fragments/layout :: header"></div>
+
+<!-- Conteúdo principal -->
+<div class="flex-grow">
+    <div class="card bg-base-100 shadow-md w-full">
+        <!-- Cabeçalho do card -->
+        <div class="flex items-center justify-between p-4 border-b border-base-200">
+            <h2 class="card-title text-lg font-bold">Motos Cadastradas</h2>
+            <button class="btn btn-sm btn-primary">Cadastrar Nova Moto</button>
+        </div>
+
+        <!-- Lista de motos -->
+        <ul class="list bg-base-100 rounded-b-box p-4 space-y-2">
+            <li class="flex items-center justify-between p-3 bg-base-200 rounded-md shadow-sm">
+                <div>
+                    <div class="font-semibold">ABC-1234</div>
+                    <div class="text-xs uppercase font-semibold opacity-60">Yamaha XTZ</div>
+                </div>
+                <div class="flex gap-2">
+                    <button class="btn btn-sm btn-primary">Cadastrar evento</button>
+                    <button class="btn btn-sm btn-ghost">Editar</button>
+                </div>
+            </li>
+
+            <li class="flex items-center justify-between p-3 bg-base-200 rounded-md shadow-sm">
+                <div>
+                    <div class="font-semibold">XYZ-5678</div>
+                    <div class="text-xs uppercase font-semibold opacity-60">Honda CG 160</div>
+                </div>
+                <button class="btn btn-sm btn-ghost">Editar</button>
+            </li>
+
+            <li class="flex items-center justify-between p-3 bg-base-200 rounded-md shadow-sm">
+                <div>
+                    <div class="font-semibold">MNO-9012</div>
+                    <div class="text-xs uppercase font-semibold opacity-60">Suzuki GSX</div>
+                </div>
+                <button class="btn btn-sm btn-ghost">Editar</button>
+            </li>
+        </ul>
+        <div class="join">
+            <button class="join-item btn">«</button>
+            <button class="join-item btn">Page 22</button>
+            <button class="join-item btn">»</button>
+        </div>
+    </div>
+
+</div>
+
+
+
+<!-- Footer -->
+<div th:replace="fragments/footer :: footer"></div>
+</body>
+</html>
