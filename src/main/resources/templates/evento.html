@@ -5,22 +5,27 @@
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <link href="https://cdn.jsdelivr.net/npm/daisyui@5/themes.css" rel="stylesheet" type="text/css" />
     <meta charset="UTF-8">
-    <title>Track in</title>
+    <title>Infos Moto</title>
 </head>
 <body class="flex flex-col min-h-screen">
-<!-- Header -->
-<div th:replace="fragments/layout :: header"></div>
+    <!-- Header -->
+    <div th:replace="fragments/layout :: header"></div>
 
-<!-- Conteúdo principal -->
-<div class="flex-grow">
+    <div class="flex-grow">
+        <body class="flex flex-col min-h-screen">
+        <div class="navbar bg-primary text-primary-content">
+            <div class="flex-1 px-4 text-xl font-bold">TrackIn</div>
+        </div>
 
         <div class="flex-grow">
             <div class="container mx-auto space-y-8 p-6">
 
+                <!-- Cabeçalho -->
                 <div class="flex items-center justify-between">
-                    <h1 class="text-2xl font-bold">Dashboard geral</h1>
+                    <h1 class="text-2xl font-bold">Dashboard de Motos</h1>
                     <div class="flex gap-2">
-                        <a href="/evento" class="btn btn-primary btn-sm">Cadastrar Evento</a>
+                        <a class="btn btn-primary btn-sm">Cadastrar Evento</a>
+                        <a  class="btn btn-secondary btn-sm">Cadastrar Nova Moto</a>
                     </div>
                 </div>
 
@@ -50,15 +55,15 @@
                         <h2 class="card-title text-lg font-bold">Últimos Eventos Registrados</h2>
                     </div>
                     <ul class="p-4 space-y-2">
-                        <li class="flex items-center justify-between p-3 bg-base-200 rounded-md shadow-sm">
-                        <div>
-                            <div class="font-semibold">Tipo Evento</div>
-                            <div class="text-xs opacity-70">00/00/0000</div>
-                            <div class="text-xs opacity-50">
-                                Moto: <span >ABC-1234</span>
+                        <li class="flex items-center justify-between p-3 bg-base-200 rounded-md shadow-sm"
+                            <div>
+                                <div class="font-semibold">Tipo Evento</div>
+                                <div class="text-xs opacity-70">00/00/0000</div>
+                                <div class="text-xs opacity-50">
+                                    Moto: <span >ABC-1234</span>
+                                </div>
                             </div>
-                        </div>
-                        <a class="btn btn-sm btn-ghost">Detalhes</a>
+                            <a class="btn btn-sm btn-ghost">Detalhes</a>
                         </li>
                     </ul>
                 </div>
@@ -66,39 +71,7 @@
             </div>
         </div>
     </div>
-
-
-    <!-- Lista de motos -->
-    <div class="card bg-base-100 shadow-md w-full">
-        <div class="flex items-center justify-between p-4 border-b border-base-200">
-            <h2 class="text-2xl font-bold text-primary p-4">Motos Cadastradas</h2>
-            <a href="moto/formMoto" class="btn btn-sm btn-primary ">Cadastrar Nova Moto</a>
-        </div>
-        <ul class="list bg-base-100 rounded-b-box p-4 space-y-2">
-            <li th:each="moto : ${motos}" class="flex items-center justify-between p-3 bg-base-200 rounded-md shadow-sm">
-                <div>
-                    <div class="font-semibold" th:text="${moto.placa}"></div>
-                    <div class="text-xs uppercase font-semibold opacity-60" th:text="${moto.modelo}"></div>
-                </div>
-                <div class="flex gap-2">
-                    <a href="#" class="btn btn-sm btn-ghost">Detalhes</a>
-                    <a href="#" class="btn btn-sm btn-ghost">Editar</a>
-                    <button class="btn btn-sm btn-ghost">excluir</button>
-                </div>
-            </li>
-        </ul>
-        <div class="join">
-            <button class="join-item btn">«</button>
-            <button class="join-item btn">Page 22</button>
-            <button class="join-item btn">»</button>
-        </div>
-    </div>
-
-</div>
-
-
-
-<!-- Footer -->
-<div th:replace="fragments/footer :: footer"></div>
+    <!-- Footer -->
+    <div th:replace="fragments/footer :: footer"></div>
 </body>
 </html>

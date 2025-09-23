@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="forest">
+<head>
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@5/themes.css" rel="stylesheet" type="text/css" />
+    <meta charset="UTF-8">
+    <title>Formulário</title>
+</head>
+<body >
+
+<!-- Header -->
+<div th:replace="fragments/layout :: header"></div>
+
+
+<h1 class="text-2xl font-bold text-primary p-8">Cadastrar Moto</h1>
+<main class="grid place-items-center gap-4 p-8">
+    <form class="w-full max-w-md" method="post" th:object="${moto}">
+
+        <!-- Placa -->
+        <fieldset class="fieldset">
+            <legend class="fieldset-legend">Placa</legend>
+            <input th:field="*{placa}" type="text" class="input" placeholder="Ex: ABC-1234" required />
+            <p class="label">Campo obrigatório</p>
+        </fieldset>
+
+        <!-- Modelo -->
+        <fieldset class="fieldset">
+            <legend class="fieldset-legend">Modelo</legend>
+            <input th:field="*{modelo}" type="text" class="input" placeholder="Modelo da moto" />
+            <p class="label">Selecione o modelo</p>
+        </fieldset>
+
+        <!-- Ano -->
+        <fieldset class="fieldset">
+            <legend class="fieldset-legend">Ano</legend>
+            <input th:field="*{ano}" type="number" min="1900" max="2099" class="input" placeholder="Ano de fabricação" required />
+            <p class="label">Campo obrigatório</p>
+        </fieldset>
+
+        <!-- Status -->
+        <fieldset class="fieldset">
+            <legend class="fieldset-legend">Status</legend>
+            <select th:field="*{statusMoto}" class="select select-bordered">
+                <option th:each="status : ${statusMotos}" th:value="${status}" th:text="${status}"></option>
+            </select>
+            <p class="label">Escolha o status da moto</p>
+        </fieldset>
+
+        <!-- RFID Tag -->
+        <fieldset class="fieldset">
+            <legend class="fieldset-legend">RFID Tag</legend>
+            <input th:field="*{rfidTag}" type="text" class="input" placeholder="Identificação RFID" />
+        </fieldset>
+
+        <!-- Data de aquisição -->
+        <fieldset class="fieldset">
+            <legend class="fieldset-legend">Data de aquisição</legend>
+            <input th:field="*{dataAquisicao}" type="date" class="input" />
+        </fieldset>
+
+        <!-- Última manutenção -->
+        <fieldset class="fieldset">
+            <legend class="fieldset-legend">Última manutenção</legend>
+            <input th:field="*{ultimaManutencao}" type="date" class="input" />
+        </fieldset>
+
+        <div class="space-x-4">
+            <a href="/motos" class="btn btn-neutral">Cancelar</a>
+            <button type="submit" class="btn btn-primary">Salvar</button>
+        </div>
+    </form>
+</main>
+
+
+</body>
+</html>

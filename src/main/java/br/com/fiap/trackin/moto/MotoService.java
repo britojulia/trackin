@@ -18,4 +18,9 @@ public class MotoService {
     public List<Moto> getAllMotos(){
         return motoRepository.findAll();
     }
+
+    public Moto save(Moto moto) {
+        return motoRepository.save(moto);
+    }
+
 }
