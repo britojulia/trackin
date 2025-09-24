@@ -1,5 +1,6 @@
 package br.com.fiap.trackin.eventoMoto;
 
+import br.com.fiap.trackin.moto.Moto;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -15,5 +16,9 @@ public class EventoMotoService {
 
     public List<EventoMoto> getAllEventos(){
         return eventoMotoRepository.findAll();
+    }
+
+    public EventoMoto save(EventoMoto eventoMoto) {
+        return eventoMotoRepository.save(eventoMoto);
     }
 }

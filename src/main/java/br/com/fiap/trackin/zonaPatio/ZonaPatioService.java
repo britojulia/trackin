@@ -1,5 +1,6 @@
 package br.com.fiap.trackin.zonaPatio;
 
+import br.com.fiap.trackin.patio.Patio;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,5 +17,9 @@ public class ZonaPatioService {
 
     public List<ZonaPatio> getAllZonaPatios() {
         return zonaPatioRepository.findAll();
+    }
+
+    public ZonaPatio save(ZonaPatio zonaPatio) {
+        return zonaPatioRepository.save(zonaPatio);
     }
 }
