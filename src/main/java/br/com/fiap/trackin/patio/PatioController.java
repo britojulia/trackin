@@ -2,6 +2,7 @@ package br.com.fiap.trackin.patio;
 
 import br.com.fiap.trackin.enuns.TypesEnum;
 import br.com.fiap.trackin.moto.Moto;
+import jakarta.validation.Valid;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -34,7 +35,7 @@ public class PatioController {
     }
 
     @PostMapping("/formPatio")
-    public String create(Patio patio, RedirectAttributes redirect ){ //session
+    public String create(@Valid Patio patio, RedirectAttributes redirect ){ //session
         patioService.save(patio);
         redirect.addFlashAttribute("message", "patio cadastrado com sucesso!");
         return "redirect:/patio"; //301

@@ -21,10 +21,10 @@ public class Moto {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotBlank
+    @NotBlank(message = "placa não pode ser nula")
     private String placa;
 
-    @NotBlank
+    @NotBlank(message = "modelo não pode ser nulo")
     private String modelo;
 
     private Integer ano;
@@ -32,7 +32,7 @@ public class Moto {
     @Enumerated(EnumType.STRING)
     private TypesEnum.StatusMoto statusMoto;
 
-    @NotBlank
+    @NotBlank(message = "RFID não pode ser nulo")
     private String rfidTag;
 
     private LocalDate dataAquisicao;

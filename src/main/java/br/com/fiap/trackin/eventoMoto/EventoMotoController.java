@@ -3,6 +3,7 @@ package br.com.fiap.trackin.eventoMoto;
 import br.com.fiap.trackin.enuns.TypesEnum;
 import br.com.fiap.trackin.moto.Moto;
 import br.com.fiap.trackin.moto.MotoService;
+import jakarta.validation.Valid;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -37,7 +38,7 @@ public class EventoMotoController {
     }
 
     @PostMapping("/formEvento")
-    public String create(EventoMoto eventoMoto, RedirectAttributes redirect ){ //session
+    public String create(@Valid EventoMoto eventoMoto, RedirectAttributes redirect ){ //session
         eventoMotoService.save(eventoMoto);
         redirect.addFlashAttribute("message", "Novo evento cadastrado com sucesso!");
         return "redirect:/eventoMoto"; //301

@@ -20,7 +20,7 @@ public class ZonaPatio {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotBlank
+    @NotBlank(message = "nome da zona do pátio não pode ser nulo")
     private String nome; //Manutenção, Estacionamento, Lavagem, etc
 
     private Double coordenadaInicialX;

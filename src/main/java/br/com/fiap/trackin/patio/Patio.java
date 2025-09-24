@@ -19,17 +19,17 @@ public class Patio {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotBlank
+    @NotBlank(message = "nome do pátio não pode ser nulo")
     private String nome;
 
-    @NotBlank
+    @NotBlank(message = "Endereço não pode ser nulo")
     private String endereco;
 
     private String cidade;
 
     private String estado;
 
-    @NotBlank
+    @NotBlank(message = "Oaís não pode ser nulo")
     private String pais; //brasil ou mexico
 
     private Double dimensaoX; //largura em metros
