@@ -1,6 +1,7 @@
 package br.com.fiap.trackin.eventoMoto;
 
 import br.com.fiap.trackin.moto.Moto;
+import jakarta.persistence.EntityNotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -20,5 +21,15 @@ public class EventoMotoService {
 
     public EventoMoto save(EventoMoto eventoMoto) {
         return eventoMotoRepository.save(eventoMoto);
+    }
+
+    public void deleteById(Long id){
+        eventoMotoRepository.delete(getEvento(id));
+    }
+
+    private EventoMoto getEvento(Long id){
+        return eventoMotoRepository.findById(id).orElseThrow(
+                () -> new EntityNotFoundException("evento não encontrado")
+        );
     }
 }

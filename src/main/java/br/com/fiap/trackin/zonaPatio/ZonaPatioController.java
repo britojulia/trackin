@@ -6,9 +6,7 @@ import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
@@ -36,5 +34,12 @@ public class ZonaPatioController {
         zonaPatioService.save(zonaPatio);
         redirect.addFlashAttribute("message", "zona do patio cadastrada com sucesso!");
         return "redirect:/zonaPatio"; //301
+    }
+
+    @DeleteMapping("{id}")
+    public String delete(@PathVariable Long id, RedirectAttributes redirect ){
+        zonaPatioService.deleteById(id);
+        redirect.addFlashAttribute("message", "Patio deletado com sucesso!");
+        return "redirect:/zonaPatio";
     }
 }

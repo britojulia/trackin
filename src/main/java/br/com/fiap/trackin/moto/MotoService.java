@@ -2,6 +2,7 @@ package br.com.fiap.trackin.moto;
 
 import br.com.fiap.trackin.patio.PatioRepository;
 import br.com.fiap.trackin.patio.PatioService;
+import jakarta.persistence.EntityNotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -21,6 +22,16 @@ public class MotoService {
 
     public Moto save(Moto moto) {
         return motoRepository.save(moto);
+    }
+
+    public void deleteById(Long id){
+        motoRepository.delete(getMoto(id));
+    }
+
+    private Moto getMoto(Long id){
+        return motoRepository.findById(id).orElseThrow(
+                () -> new EntityNotFoundException("moto não encontrada")
+        );
     }
 
 }

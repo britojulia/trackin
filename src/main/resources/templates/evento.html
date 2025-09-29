@@ -62,7 +62,10 @@
                     </div>
                     <div class="flex gap-2">
                         <a href="#" class="btn btn-sm btn-ghost">Editar</a>
-                        <a class="btn btn-sm btn-ghost">excluir</a>
+                        <form method="post" th:action="${'/moto/' + moto.id}">
+                            <input type="hidden" name="_method" value="DELETE" />
+                            <button class="btn btn-sm btn-ghost" >apagar</button>
+                        </form>
                     </div>
                 </li>
             </ul>

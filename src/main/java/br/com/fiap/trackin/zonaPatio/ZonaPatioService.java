@@ -1,6 +1,7 @@
 package br.com.fiap.trackin.zonaPatio;
 
 import br.com.fiap.trackin.patio.Patio;
+import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -21,5 +22,15 @@ public class ZonaPatioService {
 
     public ZonaPatio save(ZonaPatio zonaPatio) {
         return zonaPatioRepository.save(zonaPatio);
+    }
+
+    public void deleteById(Long id){
+        zonaPatioRepository.delete(getZona(id));
+    }
+
+    private ZonaPatio getZona(Long id){
+        return zonaPatioRepository.findById(id).orElseThrow(
+                () -> new EntityNotFoundException("zona de patio não encontrada")
+        );
     }
 }
