@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="forest">
+<head>
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@5/themes.css" rel="stylesheet" type="text/css" />
+    <meta charset="UTF-8">
+    <title>Zona de Patios</title>
+</head>
+<body class="flex flex-col min-h-screen">
+<!-- Header -->
+<div th:replace="~{fragments/layout :: header}"></div>
+
+<!-- Conteúdo Principal-->
+<div class="flex-grow">
+    <div class="container mx-auto p-6 space-y-8">
+
+        <div class="flex items-center justify-between">
+            <h1 class="text-2xl  font-bold">Zonas do Pátio</h1>
+            <div class="flex gap-2">
+                <a href="/zonaPatio/formZona" class="btn btn-primary btn-sm">Cadastrar Zona do Patio</a>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6">
+            <div th:each="zona : ${zonas}"
+                 class="card shadow-lg p-4 flex flex-col justify-between"
+                 th:style="'border: 2px solid' + ${zona.cor}" >
+                <div>
+                    <h2 class="text-lg font-bold" th:text="${zona.nome}">Nome da Zona do Patio</h2>
+                    <p class="text-sm opacity-70">
+                        Coordenadas Iniciais:
+                        <span th:text="${zona.coordenadaInicialX}">0</span>
+                        <span th:text="${zona.coordenadaInicialY}">0</span>
+                    </p>
+                    <p class="text-sm opacity-70">
+                        Coordenadas Finais:
+                        <span th:text="${zona.coordenadaFinalX}">0</span>
+                        <span th:text="${zona.coordenadaFinalY}">0</span>
+                    </p>
+                    <p class="text-sm opacity-50">Cor: <span th:text="${zona.cor}">#000000</span></p>
+                </div>
+                <div class="mt-4 flex justify-end">
+                    <a class="btn btn-sm btn-none">editar</a>
+                    <a class="btn btn-sm btn-primary">apagar</a>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<!-- Footer -->
+<div th:replace="~{fragments/footer :: footer}"></div>
+
+</body>
+</html>

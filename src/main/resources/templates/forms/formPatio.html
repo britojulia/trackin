@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="forest">
+<head>
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@5/themes.css" rel="stylesheet" type="text/css" />
+    <meta charset="UTF-8">
+    <title>Formulário</title>
+</head>
+<body>
+<!-- Header -->
+<div th:replace="~{fragments/layout :: header}"></div>
+
+<h1 class="text-2xl font-bold text-primary p-8">Cadastrar Pátio</h1>
+<main class="grid place-items-center gap-4 p-8">
+    <form class="w-full max-w-md" method="post" th:object="${patio}">
+
+        <fieldset class="fieldset">
+            <legend class="fieldset-legend">Nome</legend>
+            <input th:field="*{nome}" type="text" class="input" placeholder="Nome do pátio" required />
+        </fieldset>
+
+        <fieldset class="fieldset">
+            <legend class="fieldset-legend">Endereço</legend>
+            <input th:field="*{endereco}" type="text" class="input" placeholder="Rua, número" required />
+        </fieldset>
+
+        <fieldset class="fieldset">
+            <legend class="fieldset-legend">Cidade</legend>
+            <input th:field="*{cidade}" type="text" class="input" placeholder="Cidade" />
+        </fieldset>
+
+        <fieldset class="fieldset">
+            <legend class="fieldset-legend">Estado</legend>
+            <input th:field="*{estado}" type="text" class="input" placeholder="Estado" />
+        </fieldset>
+
+        <fieldset class="fieldset">
+            <legend class="fieldset-legend">País</legend>
+            <input th:field="*{pais}" type="text" class="input" placeholder="Brasil" required />
+        </fieldset>
+
+        <fieldset class="fieldset">
+            <legend class="fieldset-legend">Dimensões (X e Y em metros)</legend>
+            <input th:field="*{dimensaoX}" type="number" step="0.1" class="input" placeholder="Largura" />
+            <input th:field="*{dimensaoY}" type="number" step="0.1" class="input mt-2" placeholder="Comprimento" />
+        </fieldset>
+
+        <div class="space-x-4 mt-4">
+            <a href="/patio" class="btn btn-neutral">Cancelar</a>
+            <button type="submit" class="btn btn-primary">Salvar</button>
+        </div>
+    </form>
+</main>
+
+
+</body>
+</html>

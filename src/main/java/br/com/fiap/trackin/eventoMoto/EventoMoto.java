@@ -3,6 +3,7 @@ package br.com.fiap.trackin.eventoMoto;
 import br.com.fiap.trackin.enuns.TypesEnum;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -27,7 +28,7 @@ public class EventoMoto {
 
     private String observacao;
 
-    @NotBlank(message = "fonte do evento não pode ser nulo")
+    @NotNull(message = "fonte do evento não pode ser nulo")
     @Enumerated(EnumType.STRING)
     private TypesEnum.FonteEvento fonteEvento; //Sistema, Manual, VisaoComputacional, RFID
 

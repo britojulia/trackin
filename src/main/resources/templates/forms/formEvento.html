@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="forest">
+<head>
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@5/themes.css" rel="stylesheet" type="text/css" />
+    <meta charset="UTF-8">
+    <title>Formulário</title>
+</head>
+<body>
+<!-- Header -->
+<div th:replace="~{fragments/layout :: header}"></div>
+
+<h1 class="text-2xl font-bold text-primary p-8">Cadastrar Evento de Moto</h1>
+<main class="grid place-items-center gap-4 p-8">
+    <form class="w-full max-w-md" method="post" th:object="${evento}">
+
+        <fieldset class="fieldset">
+            <legend class="fieldset-legend">Tipo de Evento</legend>
+            <input th:field="*{tipo}" type="text" class="input" placeholder="Ex: Entrada, Manutenção" required />
+            <p class="label">Campo obrigatório</p>
+        </fieldset>
+
+        <fieldset class="fieldset">
+            <legend class="fieldset-legend">Data e Hora do Evento</legend>
+            <input th:field="*{timesTamp}" type="datetime-local" class="input" required />
+            <p class="label">Campo obrigatório</p>
+        </fieldset>
+
+        <fieldset class="fieldset">
+            <legend class="fieldset-legend">Observação</legend>
+            <textarea th:field="*{observacao}" class="input" placeholder="Observações"></textarea>
+        </fieldset>
+
+        <fieldset class="fieldset">
+            <legend class="fieldset-legend">Fonte do Evento</legend>
+            <select th:field="*{fonteEvento}" class="select select-bordered" required>
+                <option th:each="fonte : ${fonteEvento}" th:value="${fonte}" th:text="${fonte}"></option>
+            </select>
+            <p class="label">Escolha a fonte do evento</p>
+        </fieldset>
+
+        <div class="space-x-4 mt-4">
+            <a href="/evento" class="btn btn-neutral">Cancelar</a>
+            <button type="submit" class="btn btn-primary">Salvar</button>
+        </div>
+    </form>
+</main>
+</body>
+</html>

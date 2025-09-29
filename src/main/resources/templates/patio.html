@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="forest">
+<head>
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@5/themes.css" rel="stylesheet" type="text/css" />
+    <meta charset="UTF-8">
+    <title>Patio</title>
+</head>
+<body class="flex flex-col min-h-screen">
+<!-- Header -->
+<div th:replace="~{fragments/layout :: header}"></div>
+
+<div class="flex-grow">
+
+    <!-- Conteúdo Principal-->
+    <div class="container mx-auto p-6 space-y-8">
+
+        <div class="flex items-center justify-between">
+            <h1 class="text-2xl font-bold">Pátios</h1>
+            <div class="flex gap-2">
+                <a href="/patio/formPatio" class="btn btn-primary btn-sm">Cadastrar Pátio</a>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6">
+            <div th:each="patio : ${patios}"
+            class="card bg-base-100 shadow-lg border-2 border-primary p-4 flex flex-col justify-between">
+
+            <div>
+                    <h2 class="text-lg text-primary font-bold" th:text="${patio.nome}">Nome do Pátio</h2>
+                    <p class="text-sm opacity-70" th:text="${patio.endereco}">Endereço</p>
+                    <p class="text-sm opacity-70">
+                        <span th:text="${patio.cidade}">Cidade</span> -
+                        <span th:text="${patio.estado}">Estado</span>
+                    </p>
+                    <p class="text-sm opacity-50">País: <span th:text="${patio.pais}">Brasil</span></p>
+                    <p class="text-sm opacity-50">
+                        Dimensão:
+                        <span th:text="${patio.dimensaoX}">0</span> x
+                        <span th:text="${patio.dimensaoY}">0</span> metros
+                    </p>
+                <div class="mt-4 flex justify-end">
+                    <a class="btn btn-sm btn-none">editar</a>
+                    <a class="btn btn-sm btn-primary">apagar</a>
+
+                </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<!-- Footer -->
+<div th:replace="~{fragments/footer :: footer}"></div>
+
+</body>
+</html>

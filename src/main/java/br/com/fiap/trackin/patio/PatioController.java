@@ -25,7 +25,7 @@ public class PatioController {
     public String index(Model model) {
         var patios = patioService.getAllPatios();
         model.addAttribute("patios", patios);
-        return "index";
+        return "patio";
     }
 
     @GetMapping("/formPatio")

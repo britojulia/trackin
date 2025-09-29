@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="forest">
+<head>
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@5/themes.css" rel="stylesheet" type="text/css" />
+    <meta charset="UTF-8">
+    <title>Formulário</title>
+</head>
+<body>
+<!-- Header -->
+<div th:replace="~{fragments/layout :: header}"></div>
+
+<h1 class="text-2xl font-bold text-primary p-8">Cadastrar Zona de Pátio</h1>
+<main class="grid place-items-center gap-4 p-8">
+    <form class="w-full max-w-md" method="post" th:object="${zona}">
+
+        <fieldset class="fieldset">
+            <legend class="fieldset-legend">Nome da Zona</legend>
+            <input th:field="*{nome}" type="text" class="input" placeholder="Ex: Manutenção, Estacionamento" required />
+        </fieldset>
+
+        <fieldset class="fieldset">
+            <legend class="fieldset-legend">Coordenadas Iniciais (X e Y)</legend>
+            <input th:field="*{coordenadaInicialX}" type="number" step="0.1" class="input" placeholder="X inicial" />
+            <input th:field="*{coordenadaInicialY}" type="number" step="0.1" class="input mt-2" placeholder="Y inicial" />
+        </fieldset>
+
+        <fieldset class="fieldset">
+            <legend class="fieldset-legend">Coordenadas Finais (X e Y)</legend>
+            <input th:field="*{coordenadaFinalX}" type="number" step="0.1" class="input" placeholder="X final" />
+            <input th:field="*{coordenadaFinalY}" type="number" step="0.1" class="input mt-2" placeholder="Y final" />
+        </fieldset>
+
+        <fieldset class="fieldset">
+            <legend class="fieldset-legend">Cor da Zona</legend>
+            <input th:field="*{cor}" type="color" class="input w-24 h-10" />
+        </fieldset>
+
+        <div class="space-x-4 mt-4">
+            <a href="/zonaPatio" class="btn btn-neutral">Cancelar</a>
+            <button type="submit" class="btn btn-primary">Salvar</button>
+        </div>
+    </form>
+</main>
+
+</body>
+</html>

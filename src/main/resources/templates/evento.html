@@ -1,77 +1,76 @@
 <!DOCTYPE html>
 <html lang="en" data-theme="forest">
 <head>
+    <meta charset="UTF-8">
+    <title>Infos Moto</title>
     <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <link href="https://cdn.jsdelivr.net/npm/daisyui@5/themes.css" rel="stylesheet" type="text/css" />
-    <meta charset="UTF-8">
-    <title>Infos Moto</title>
 </head>
 <body class="flex flex-col min-h-screen">
-    <!-- Header -->
-    <div th:replace="fragments/layout :: header"></div>
+<!-- Header -->
+<div th:replace="~{fragments/layout :: header}"></div>
 
-    <div class="flex-grow">
-        <body class="flex flex-col min-h-screen">
-        <div class="navbar bg-primary text-primary-content">
-            <div class="flex-1 px-4 text-xl font-bold">TrackIn</div>
-        </div>
+<div class="flex-grow">
 
-        <div class="flex-grow">
-            <div class="container mx-auto space-y-8 p-6">
+    <!-- Conteúdo -->
+    <div class="container mx-auto p-6 space-y-8">
 
-                <!-- Cabeçalho -->
-                <div class="flex items-center justify-between">
-                    <h1 class="text-2xl font-bold">Dashboard de Motos</h1>
-                    <div class="flex gap-2">
-                        <a class="btn btn-primary btn-sm">Cadastrar Evento</a>
-                        <a  class="btn btn-secondary btn-sm">Cadastrar Nova Moto</a>
-                    </div>
-                </div>
-
-                <!-- Indicadores -->
-                <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
-                    <div class="card bg-primary text-primary-content p-4">
-                        <h2 class="text-lg font-bold">Motos Cadastradas</h2>
-                        <p class="text-2xl font-bold" >0</p>
-                    </div>
-                    <div class="card bg-secondary text-secondary-content p-4">
-                        <h2 class="text-lg font-bold">Eventos Registrados</h2>
-                        <p class="text-2xl font-bold">0</p>
-                    </div>
-                    <div class="card bg-accent text-accent-content p-4">
-                        <h2 class="text-lg font-bold">Motos em Manutenção</h2>
-                        <p class="text-2xl font-bold">0</p>
-                    </div>
-                    <div class="card bg-neutral text-neutral-content p-4">
-                        <h2 class="text-lg font-bold">Último Evento</h2>
-                        <p class="text-sm">--</p>
-                    </div>
-                </div>
-
-                <!-- Últimos Eventos -->
-                <div class="card bg-base-100 shadow-md">
-                    <div class="flex items-center justify-between p-4 border-b border-base-200">
-                        <h2 class="card-title text-lg font-bold">Últimos Eventos Registrados</h2>
-                    </div>
-                    <ul class="p-4 space-y-2">
-                        <li class="flex items-center justify-between p-3 bg-base-200 rounded-md shadow-sm"
-                            <div>
-                                <div class="font-semibold">Tipo Evento</div>
-                                <div class="text-xs opacity-70">00/00/0000</div>
-                                <div class="text-xs opacity-50">
-                                    Moto: <span >ABC-1234</span>
-                                </div>
-                            </div>
-                            <a class="btn btn-sm btn-ghost">Detalhes</a>
-                        </li>
-                    </ul>
-                </div>
-
+        <!-- Cabeçalho -->
+        <div class="flex items-center justify-between">
+            <h1 class="text-2xl font-bold">Dashboard de Eventos</h1>
+            <div class="flex gap-2">
+                <a href="/evento/formEvento" class="btn btn-primary btn-sm">Cadastrar Evento</a>
             </div>
         </div>
+
+        <!-- Indicadores -->
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+            <div class="card bg-primary text-primary-content p-4">
+                <h2 class="text-lg font-bold">Total de Eventos</h2>
+                <p class="text-2xl font-bold" th:text="${eventos.size()}">0</p>
+            </div>
+            <div class="card bg-secondary text-secondary-content p-4">
+                <h2 class="text-lg font-bold">Último Evento</h2>
+                <p class="text-sm" th:text="${#lists.isEmpty(eventos) ? '--' : eventos.get(0).tipo}">--</p>
+            </div>
+
+            <div class="card bg-neutral text-neutral-content p-4">
+                <h2 class="text-lg font-bold">Próximo Evento</h2>
+                <p class="text-sm" th:text="${#lists.isEmpty(eventos) ? '--' : eventos.get(0).timesTamp}">--</p>
+            </div>
+        </div>
+
+        <!-- Lista de Eventos -->
+        <div class="card bg-base-100 shadow-md">
+            <div class="flex items-center justify-between p-4 border-b border-base-200">
+                <h2 class="text-2xl font-bold text-primary p-4">Eventos</h2>
+            </div>
+            <ul class="p-4 space-y-2">
+                <li th:each="evento : ${eventos}"
+                    class="flex items-center justify-between p-3 bg-base-200 rounded-md shadow-sm">
+                    <div>
+                        <div class="font-semibold" th:text="${evento.tipo}">Tipo Evento</div>
+                        <div class="text-xs opacity-70" th:text="${evento.timesTamp}">00/00/0000</div>
+                        <div class="text-xs opacity-50">
+                            Fonte: <span th:text="${evento.fonteEvento}">Manual</span>
+                        </div>
+                        <div class="text-xs opacity-50" >
+                            Observação: <span th:text="${evento.observacao}"></span>
+                        </div>
+                    </div>
+                    <div class="flex gap-2">
+                        <a href="#" class="btn btn-sm btn-ghost">Editar</a>
+                        <a class="btn btn-sm btn-ghost">excluir</a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
     </div>
-    <!-- Footer -->
-    <div th:replace="fragments/footer :: footer"></div>
+</div>
+
+<!-- Footer -->
+<div th:replace="~{fragments/footer :: footer}"></div>
 </body>
 </html>

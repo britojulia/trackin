@@ -3,6 +3,7 @@ package br.com.fiap.trackin.zonaPatio;
 import br.com.fiap.trackin.enuns.TypesEnum;
 import br.com.fiap.trackin.moto.Moto;
 import jakarta.validation.Valid;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -11,21 +12,17 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
-@RequestMapping("/zona")
+@RequestMapping("/zonaPatio")
+@RequiredArgsConstructor
 public class ZonaPatioController {
 
     private final ZonaPatioService zonaPatioService;
-
-
-    public ZonaPatioController(ZonaPatioService zonaPatioService) {
-        this.zonaPatioService = zonaPatioService;
-    }
 
     @GetMapping
     public String index(Model model) {
         var zonas = zonaPatioService.getAllZonaPatios();
         model.addAttribute("zonas", zonas);
-        return "index";
+        return "zonaPatio";
     }
 
     @GetMapping("/formZona")
@@ -34,10 +31,10 @@ public class ZonaPatioController {
         return "forms/formZona";
     }
 
-    @PostMapping("/formMoto")
+    @PostMapping("/formZona")
     public String create(@Valid ZonaPatio zonaPatio, RedirectAttributes redirect ){ //session
         zonaPatioService.save(zonaPatio);
         redirect.addFlashAttribute("message", "zona do patio cadastrada com sucesso!");
-        return "redirect:/zonaPAtio"; //301
+        return "redirect:/zonaPatio"; //301
     }
 }

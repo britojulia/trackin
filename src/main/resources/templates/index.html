@@ -9,7 +9,7 @@
 </head>
 <body class="flex flex-col min-h-screen">
 <!-- Header -->
-<div th:replace="fragments/layout :: header"></div>
+<div th:replace="~{fragments/layout :: header}"></div>
 
 <!-- Conteúdo principal -->
 <div class="flex-grow">
@@ -26,19 +26,19 @@
 
                 <!-- Indicadores -->
                 <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
-                    <div class="card bg-primary text-primary-content p-4">
+                    <div class="card bg-base-100 shadow-lg border-2 border-primary p-4">
                         <h2 class="text-lg font-bold">Motos Cadastradas</h2>
                         <p class="text-2xl font-bold" >0</p>
                     </div>
-                    <div class="card bg-secondary text-secondary-content p-4">
+                    <div class="card bg-base-100 shadow-lg border-2 border-primary p-4">
                         <h2 class="text-lg font-bold">Eventos Registrados</h2>
                         <p class="text-2xl font-bold">0</p>
                     </div>
-                    <div class="card bg-accent text-accent-content p-4">
+                    <div class="card bg-base-100 shadow-lg border-2 border-primary p-4">
                         <h2 class="text-lg font-bold">Motos em Manutenção</h2>
                         <p class="text-2xl font-bold">0</p>
                     </div>
-                    <div class="card bg-neutral text-neutral-content p-4">
+                    <div class="card bg-base-100 shadow-lg border-2 border-primary p-4">
                         <h2 class="text-lg font-bold">Último Evento</h2>
                         <p class="text-sm">--</p>
                     </div>
@@ -58,7 +58,6 @@
                                 Moto: <span >ABC-1234</span>
                             </div>
                         </div>
-                        <a class="btn btn-sm btn-ghost">Detalhes</a>
                         </li>
                     </ul>
                 </div>
@@ -79,11 +78,16 @@
                 <div>
                     <div class="font-semibold" th:text="${moto.placa}"></div>
                     <div class="text-xs uppercase font-semibold opacity-60" th:text="${moto.modelo}"></div>
+                    <div class="text-xs uppercase font-semibold opacity-60" th:text="${moto.ano}"></div>
+                    <div class="text-xs uppercase font-semibold opacity-60" th:text="${moto.caracteristicasVisuais}"></div>
+                    <div class="text-xs uppercase font-semibold opacity-60" th:text="${moto.dataAquisicao}"></div>
+                    <div class="text-xs uppercase font-semibold opacity-60" th:text="${moto.rfidTag}"></div>
+                    <div class="text-xs uppercase font-semibold opacity-60" th:text="${moto.statusMoto}"></div>
+                    <div class="text-xs uppercase font-semibold opacity-60" th:text="${moto.ultimaManutencao}"></div>
                 </div>
                 <div class="flex gap-2">
-                    <a href="#" class="btn btn-sm btn-ghost">Detalhes</a>
                     <a href="#" class="btn btn-sm btn-ghost">Editar</a>
-                    <button class="btn btn-sm btn-ghost">excluir</button>
+                    <a class="btn btn-sm btn-ghost">excluir</a>
                 </div>
             </li>
         </ul>
@@ -99,6 +103,6 @@
 
 
 <!-- Footer -->
-<div th:replace="fragments/footer :: footer"></div>
+<div th:replace="~{fragments/footer :: footer}"></div>
 </body>
 </html>
