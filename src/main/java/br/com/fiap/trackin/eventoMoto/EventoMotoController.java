@@ -4,6 +4,7 @@ import br.com.fiap.trackin.enuns.TypesEnum;
 import br.com.fiap.trackin.moto.Moto;
 import br.com.fiap.trackin.moto.MotoService;
 import jakarta.validation.Valid;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,15 +15,10 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
 @RequestMapping("/evento")
+@RequiredArgsConstructor
 public class EventoMotoController {
 
     private final EventoMotoService eventoMotoService;
-
-
-    public EventoMotoController(EventoMotoService eventoMotoService) {this.eventoMotoService = eventoMotoService;
-
-    }
-
 
     @GetMapping
     public String index(Model model) {
