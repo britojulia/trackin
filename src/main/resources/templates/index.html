@@ -29,41 +29,19 @@
                 </div>
 
                 <!-- Indicadores -->
-                <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
-                    <div class="card bg-base-100 shadow-lg border-2 border-primary p-4">
-                        <h2 class="text-lg font-bold">Motos Cadastradas</h2>
-                        <p class="text-2xl font-bold" >0</p>
+                <div class="grid grid-cols-4 gap-4">
+                    <div class="card p-4 border-2 border-primary">
+                        <h2>Motos Cadastradas</h2>
+                        <p th:text="${totalMotos}">0</p>
                     </div>
-                    <div class="card bg-base-100 shadow-lg border-2 border-primary p-4">
-                        <h2 class="text-lg font-bold">Eventos Registrados</h2>
-                        <p class="text-2xl font-bold">0</p>
+                    <div class="card p-4 border-2 border-primary">
+                        <h2>Eventos Registrados</h2>
+                        <p th:text="${totalEventos}">0</p>
                     </div>
-                    <div class="card bg-base-100 shadow-lg border-2 border-primary p-4">
-                        <h2 class="text-lg font-bold">Motos em Manutenção</h2>
-                        <p class="text-2xl font-bold">0</p>
+                    <div class="card p-4 border-2 border-primary">
+                        <h2>Motos em Manutenção</h2>
+                        <p th:text="${emManutencao}">0</p>
                     </div>
-                    <div class="card bg-base-100 shadow-lg border-2 border-primary p-4">
-                        <h2 class="text-lg font-bold">Último Evento</h2>
-                        <p class="text-sm">--</p>
-                    </div>
-                </div>
-
-                <!-- Últimos Eventos -->
-                <div class="card bg-base-100 shadow-md">
-                    <div class="flex items-center justify-between p-4 border-b border-base-200">
-                        <h2 class="card-title text-lg font-bold">Últimos Eventos Registrados</h2>
-                    </div>
-                    <ul class="p-4 space-y-2">
-                        <li class="flex items-center justify-between p-3 bg-base-200 rounded-md shadow-sm">
-                        <div>
-                            <div class="font-semibold">Tipo Evento</div>
-                            <div class="text-xs opacity-70">00/00/0000</div>
-                            <div class="text-xs opacity-50">
-                                Moto: <span >ABC-1234</span>
-                            </div>
-                        </div>
-                        </li>
-                    </ul>
                 </div>
 
             </div>
@@ -90,6 +68,18 @@
                     <div class="text-xs uppercase font-semibold opacity-60" th:text="${moto.ultimaManutencao}"></div>
                 </div>
                 <div class="flex gap-2">
+                    <form method="post" th:action="@{'/moto/manutencao/' + ${moto.id}}">
+                        <input type="hidden" name="_method" value="PUT" />
+                        <button class="btn btn-info">Manutenção</button>
+                    </form>
+                    <form method="post" th:action="@{'/moto/disponivel/' + ${moto.id}}">
+                        <input type="hidden" name="_method" value="PUT" />
+                        <button class="btn btn-info">Disponivel</button>
+                    </form>
+                    <form method="post" th:action="@{'/moto/alugada/' + ${moto.id}}">
+                        <input type="hidden" name="_method" value="PUT" />
+                        <button class="btn btn-info">alugada</button>
+                    </form>
                     <a th:href="@{'/moto/formMoto/' + ${moto.id}}" class="btn btn-sm btn-ghost">Editar</a>
                     <form method="post" th:action="${'/moto/' + moto.id}">
                         <input type="hidden" name="_method" value="DELETE" />

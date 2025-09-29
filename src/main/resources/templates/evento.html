@@ -30,16 +30,12 @@
         <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
             <div class="card bg-primary text-primary-content p-4">
                 <h2 class="text-lg font-bold">Total de Eventos</h2>
-                <p class="text-2xl font-bold" th:text="${eventos.size()}">0</p>
-            </div>
-            <div class="card bg-secondary text-secondary-content p-4">
-                <h2 class="text-lg font-bold">Último Evento</h2>
-                <p class="text-sm" th:text="${#lists.isEmpty(eventos) ? '--' : eventos.get(0).tipo}">--</p>
+                <p class="text-2xl font-bold" th:text="${totalEventos}">0</p>
             </div>
 
-            <div class="card bg-neutral text-neutral-content p-4">
-                <h2 class="text-lg font-bold">Próximo Evento</h2>
-                <p class="text-sm" th:text="${#lists.isEmpty(eventos) ? '--' : eventos.get(0).timesTamp}">--</p>
+            <div class="card bg-secondary text-secondary-content p-4">
+                <h2 class="text-lg font-bold">Último Evento</h2>
+                <p class="text-sm" th:text="${ultimoEvento != null ? ultimoEvento.tipo : '--'}">--</p>
             </div>
         </div>
 

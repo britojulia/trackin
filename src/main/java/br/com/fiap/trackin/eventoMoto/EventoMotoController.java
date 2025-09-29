@@ -21,6 +21,8 @@ public class EventoMotoController {
     public String index(Model model) {
         var eventos = eventoMotoService.getAllEventos();
         model.addAttribute("eventos", eventos);
+        model.addAttribute("totalEventos", eventos.size());
+        model.addAttribute("ultimoEvento", eventos.isEmpty() ? null : eventos.get(0));
         return "evento";
     }
 
