@@ -2,6 +2,7 @@ package br.com.fiap.trackin.zonaPatio;
 
 import br.com.fiap.trackin.enuns.TypesEnum;
 import br.com.fiap.trackin.moto.Moto;
+import br.com.fiap.trackin.patio.Patio;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
@@ -26,6 +27,13 @@ public class ZonaPatioController {
     @GetMapping("/formZona")
     public String form(Model model){
         model.addAttribute("zona", new ZonaPatio());
+        return "forms/formZona";
+    }
+
+    @GetMapping("/formZona/{id}")
+    public String editForm(@PathVariable Long id, Model model) {
+        ZonaPatio zonaPatio = zonaPatioService.getZona(id);
+        model.addAttribute("zonaPatio", zonaPatio);
         return "forms/formZona";
     }
 

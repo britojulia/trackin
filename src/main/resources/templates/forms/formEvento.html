@@ -13,7 +13,7 @@
 
 <h1 class="text-2xl font-bold text-primary p-8">Cadastrar Evento de Moto</h1>
 <main class="grid place-items-center gap-4 p-8">
-    <form class="w-full max-w-md" method="post" th:object="${evento}">
+    <form class="w-full max-w-md" method="post" th:action="@{/evento/formEvento}" th:object="${evento}">
 
         <fieldset class="fieldset">
             <legend class="fieldset-legend">Tipo de Evento</legend>

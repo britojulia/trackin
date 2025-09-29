@@ -27,7 +27,7 @@ public class EventoMotoService {
         eventoMotoRepository.delete(getEvento(id));
     }
 
-    private EventoMoto getEvento(Long id){
+    public EventoMoto getEvento(Long id){
         return eventoMotoRepository.findById(id).orElseThrow(
                 () -> new EntityNotFoundException("evento não encontrado")
         );

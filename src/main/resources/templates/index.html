@@ -90,10 +90,10 @@
                     <div class="text-xs uppercase font-semibold opacity-60" th:text="${moto.ultimaManutencao}"></div>
                 </div>
                 <div class="flex gap-2">
-                    <a href="#" class="btn btn-sm btn-ghost">Editar</a>
+                    <a th:href="@{'/moto/formMoto/' + ${moto.id}}" class="btn btn-sm btn-ghost">Editar</a>
                     <form method="post" th:action="${'/moto/' + moto.id}">
                         <input type="hidden" name="_method" value="DELETE" />
-                        <button class="btn btn-sm btn-ghost" >apagar</button>
+                        <button class="btn btn-sm btn-ghost" >Apagar</button>
                     </form>
                 </div>
             </li>

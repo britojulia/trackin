@@ -28,7 +28,7 @@ public class MotoService {
         motoRepository.delete(getMoto(id));
     }
 
-    private Moto getMoto(Long id){
+    public Moto getMoto(Long id){
         return motoRepository.findById(id).orElseThrow(
                 () -> new EntityNotFoundException("moto não encontrada")
         );

@@ -15,7 +15,9 @@
 
 <h1 class="text-2xl font-bold text-primary p-8">Cadastrar Moto</h1>
 <main class="grid place-items-center gap-4 p-8">
-    <form class="w-full max-w-md" method="post" th:object="${moto}">
+    <form class="w-full max-w-md" method="post" th:action="@{/moto/formMoto}" th:object="${moto}">
+
+        <input type="hidden" th:field="*{id}" />
 
         <fieldset class="fieldset">
             <legend class="fieldset-legend">Placa</legend>
@@ -58,8 +60,18 @@
             <input th:field="*{ultimaManutencao}" type="date" class="input" />
         </fieldset>
 
+        <fieldset class="fieldset">
+            <legend class="fieldset-legend">Carcteristicas visuais</legend>
+            <input th:field="*{caracteristicasVisuais}" type="text" class="input" />
+        </fieldset>
+
+        <fieldset class="fieldset">
+            <legend class="fieldset-legend">Imagem de referencia</legend>
+            <input th:field="*{imagemReferencia}" type="text" class="input" />
+        </fieldset>
+
         <div class="space-x-4">
-            <a href="/motos" class="btn btn-neutral">Cancelar</a>
+            <a href="/moto" class="btn btn-neutral">Cancelar</a>
             <button type="submit" class="btn btn-primary">Salvar</button>
         </div>
     </form>

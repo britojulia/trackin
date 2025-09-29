@@ -29,6 +29,13 @@ public class PatioController {
         return "forms/formPatio";
     }
 
+    @GetMapping("/formPatio/{id}")
+    public String editForm(@PathVariable Long id, Model model) {
+        Patio patio = patioService.getPatio(id);
+        model.addAttribute("patio", patio);
+        return "forms/formPatio";
+    }
+
     @PostMapping("/formPatio")
     public String create(@Valid Patio patio, RedirectAttributes redirect ){ //session
         patioService.save(patio);

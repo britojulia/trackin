@@ -28,7 +28,7 @@ public class ZonaPatioService {
         zonaPatioRepository.delete(getZona(id));
     }
 
-    private ZonaPatio getZona(Long id){
+    public ZonaPatio getZona(Long id){
         return zonaPatioRepository.findById(id).orElseThrow(
                 () -> new EntityNotFoundException("zona de patio não encontrada")
         );

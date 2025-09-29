@@ -30,6 +30,14 @@ public class MotoController {
         return "forms/formMoto";
     }
 
+    @GetMapping("/formMoto/{id}")
+    public String editForm(@PathVariable Long id, Model model) {
+        Moto moto = motoService.getMoto(id);
+        model.addAttribute("moto", moto);
+        model.addAttribute("statusMotos", TypesEnum.StatusMoto.values());
+        return "forms/formMoto";
+    }
+
     @PostMapping("/formMoto")
     public String create(@Valid Moto moto, RedirectAttributes redirect ){ //session
         motoService.save(moto);

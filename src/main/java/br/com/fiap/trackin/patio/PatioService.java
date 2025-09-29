@@ -26,7 +26,7 @@ public class PatioService {
         patioRepository.delete(getPatio(id));
     }
 
-    private Patio getPatio(Long id){
+    public Patio getPatio(Long id){
         return patioRepository.findById(id).orElseThrow(
                 () -> new EntityNotFoundException("patio não encontrada")
         );

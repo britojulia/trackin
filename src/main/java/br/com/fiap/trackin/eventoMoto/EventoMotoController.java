@@ -32,6 +32,14 @@ public class EventoMotoController {
         return "forms/formEvento";
     }
 
+    @GetMapping("/formEvento/{id}")
+    public String editForm(@PathVariable Long id, Model model) {
+        EventoMoto evento = eventoMotoService.getEvento(id);
+        model.addAttribute("evento", evento);
+        model.addAttribute("fonteEvento", TypesEnum.FonteEvento.values());
+        return "forms/formMoto";
+    }
+
     @PostMapping("/formEvento")
     public String create(@Valid EventoMoto eventoMoto, RedirectAttributes redirect ){ //session
         eventoMotoService.save(eventoMoto);
