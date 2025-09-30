@@ -22,6 +22,7 @@ public class ZonaPatio {
     @NotBlank(message = "zonaPatio.nome.notblank")
     private String nome; //Manutenção, Estacionamento, Lavagem, etc
 
+    @NotNull(message = "motoZona.patio.notnull")
     @ManyToOne
     @JoinColumn(name = "patio_id")
     private Patio patio;

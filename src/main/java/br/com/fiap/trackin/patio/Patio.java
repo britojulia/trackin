@@ -27,6 +27,7 @@ public class Patio {
     @NotBlank(message = "{patio.endereco.notblank}")
     private String endereco;
 
+    @NotNull(message = "patio.capacidade.notnull")
     @Min(value = 10, message = "{patio.capacidade.min}")
     private Integer capacidadeMaxima;
 

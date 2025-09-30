@@ -4,6 +4,7 @@ import br.com.fiap.trackin.enuns.TypesEnum;
 import br.com.fiap.trackin.patio.Patio;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -25,6 +26,7 @@ public class Moto {
     @NotBlank(message = "{moto.placa.notblank}")
     private String placa;
 
+    @NotNull(message = "motoZona.patio.notnull")
     @ManyToOne
     @JoinColumn(name = "patio_id")
     private Patio patio;
