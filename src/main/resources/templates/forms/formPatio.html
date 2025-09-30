@@ -16,44 +16,44 @@
     <form class="w-full max-w-md" method="post" th:action="@{/patio/formPatio}" th:object="${patio}">
 
         <fieldset class="fieldset">
-            <legend class="fieldset-legend">Nome</legend>
-            <input th:field="*{nome}" type="text" class="input" placeholder="Nome do pátio" required />
+            <legend class="fieldset-legend" th:text="#{patio.nome}"></legend>
+            <input th:field="*{nome}" type="text" class="input" />
         </fieldset>
 
         <fieldset class="fieldset">
-            <legend class="fieldset-legend">Endereço</legend>
-            <input th:field="*{endereco}" type="text" class="input" placeholder="Rua, número" required />
+            <legend class="fieldset-legend" th:text="#{patio.endereco}"></legend>
+            <input th:field="*{endereco}" type="text" class="input"/>
         </fieldset>
 
         <fieldset class="fieldset">
-            <legend class="fieldset-legend">Capacidade máxima</legend>
-            <input th:field="*{capacidadeMaxima}" type="int" class="input" placeholder="Capacidade máxima" required />
+            <legend class="fieldset-legend" th:text="#{patio.capacidade}"></legend>
+            <input th:field="*{capacidadeMaxima}" type="int" class="input" />
         </fieldset>
 
         <fieldset class="fieldset">
-            <legend class="fieldset-legend">Cidade</legend>
-            <input th:field="*{cidade}" type="text" class="input" placeholder="Cidade" />
+            <legend class="fieldset-legend"th:text="#{patio.cidade}"></legend>
+            <input th:field="*{cidade}" type="text" class="input" />
         </fieldset>
 
         <fieldset class="fieldset">
-            <legend class="fieldset-legend">Estado</legend>
-            <input th:field="*{estado}" type="text" class="input" placeholder="Estado" />
+            <legend class="fieldset-legend"th:text="#{patio.estado}"></legend>
+            <input th:field="*{estado}" type="text" class="input" />
         </fieldset>
 
         <fieldset class="fieldset">
-            <legend class="fieldset-legend">País</legend>
-            <input th:field="*{pais}" type="text" class="input" placeholder="Brasil" required />
+            <legend class="fieldset-legend"th:text="#{patio.pais}"></legend>
+            <input th:field="*{pais}" type="text" class="input"/>
         </fieldset>
 
         <fieldset class="fieldset">
-            <legend class="fieldset-legend">Dimensões (X e Y em metros)</legend>
-            <input th:field="*{dimensaoX}" type="number" step="0.1" class="input" placeholder="Largura" />
-            <input th:field="*{dimensaoY}" type="number" step="0.1" class="input mt-2" placeholder="Comprimento" />
+            <legend class="fieldset-legend" th:text="#{patio.dimensao}"></legend>
+            <input th:field="*{dimensaoX}" type="number" step="0.1" class="input" />
+            <input th:field="*{dimensaoY}" type="number" step="0.1" class="input mt-2"/>
         </fieldset>
 
         <div class="space-x-4 mt-4">
-            <a href="/patio" class="btn btn-neutral">Cancelar</a>
-            <button type="submit" class="btn btn-primary">Salvar</button>
+            <a href="/patio" class="btn btn-neutral" th:text="#{cancel}"></a>
+            <button type="submit" class="btn btn-primary" th:text="#{save}"></button>
         </div>
     </form>
 </main>

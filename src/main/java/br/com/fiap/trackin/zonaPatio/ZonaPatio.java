@@ -19,12 +19,11 @@ public class ZonaPatio {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotBlank(message = "nome da zona do pátio não pode ser nulo")
+    @NotBlank(message = "zonaPatio.nome.notblank")
     private String nome; //Manutenção, Estacionamento, Lavagem, etc
 
     @ManyToOne
-    @NotNull
-    @JoinColumn(name = "patio_id", nullable = false)
+    @JoinColumn(name = "patio_id")
     private Patio patio;
 
     private Double coordenadaInicialX;

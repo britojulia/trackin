@@ -12,16 +12,16 @@
 <div th:fragment="menuContent">
     <ul class="menu bg-base-200 rounded-box w-56">
         <li>
-            <a href="/moto">Dashboard</a>
+            <a href="/moto" th:text="#{dashboard.title}"></a>
         </li>
         <li>
-            <a href="/evento">Eventos</a>
+            <a href="/evento" th:text="#{evento.dashboard.title}"></a>
         </li>
         <li>
-            <a href="/patio">Patio</a>
+            <a href="/patio" th:text="#{patio.dashboard.title}"></a>
         </li>
         <li>
-            <a href="/zonaPatio">Zona de patio</a>
+            <a href="/zonaPatio" th:text="#{zonaPatio.dashboard.title}"></a>
         </li>
     </ul>
 </div>

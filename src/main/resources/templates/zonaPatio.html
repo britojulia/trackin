@@ -20,35 +20,34 @@
         </div>
 
         <div class="flex items-center justify-between">
-            <h1 class="text-2xl  font-bold">Zonas do Pátio</h1>
+            <h1 class="text-2xl  font-bold" th:text="#{zonaPatio.dashboard.title}" ></h1>
             <div class="flex gap-2">
-                <a href="/zonaPatio/formZona" class="btn btn-primary btn-sm">Cadastrar Zona do Patio</a>
+                <a href="/zonaPatio/formZona" class="btn btn-primary btn-sm" th:text="#{zonaPatio.new}"></a>
             </div>
         </div>
 
+        <!-- Cards das zonas de patio-->
         <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6">
             <div th:each="zona : ${zonas}"
                  class="card shadow-lg p-4 flex flex-col justify-between"
                  th:style="'border: 2px solid' + ${zona.cor}" >
                 <div>
-                    <h2 class="text-lg font-bold" th:text="${zona.nome}">Nome da Zona do Patio</h2>
-                    <p class="text-sm opacity-70">
-                        Coordenadas Iniciais:
+                    <h2 class="text-lg font-bold" th:text="${zona.nome}"></h2>
+                    <p class="text-sm opacity-70" th:text="#{zonaPatio.coordenadaInicial}">
                         <span th:text="${zona.coordenadaInicialX}">0</span>
                         <span th:text="${zona.coordenadaInicialY}">0</span>
                     </p>
-                    <p class="text-sm opacity-70">
-                        Coordenadas Finais:
+                    <p class="text-sm opacity-70" th:text="#{zonaPatio.coordenadaFinal}">
                         <span th:text="${zona.coordenadaFinalX}">0</span>
                         <span th:text="${zona.coordenadaFinalY}">0</span>
                     </p>
                     <p class="text-sm opacity-50">Cor: <span th:text="${zona.cor}">#000000</span></p>
                 </div>
                 <div class="mt-4 flex justify-end">
-                    <<a th:href="@{'/zonaPatio/formZona/' + ${zona.id}}" class="btn btn-sm btn-ghost">Editar</a>
+                    <a th:href="@{'/zonaPatio/formZona/' + ${zona.id}}" class="btn btn-sm btn-ghost" th:text="#{edit}"></a>
                     <form method="post" th:action="${'/zonaPatio/' + zona.id}">
                         <input type="hidden" name="_method" value="DELETE" />
-                        <button class="btn btn-sm btn-ghost" >apagar</button>
+                        <button class="btn btn-sm btn-ghost" th:text="#{delete}"></button>
                     </form>
                 </div>
             </div>

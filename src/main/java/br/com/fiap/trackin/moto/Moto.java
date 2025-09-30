@@ -22,14 +22,14 @@ public class Moto {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotBlank(message = "placa não pode ser nula")
+    @NotBlank(message = "{moto.placa.notblank}")
     private String placa;
 
     @ManyToOne
     @JoinColumn(name = "patio_id")
     private Patio patio;
 
-    @NotBlank(message = "modelo não pode ser nulo")
+    @NotBlank(message = "{moto.modelo.notblank}")
     private String modelo;
 
     private Integer ano;
@@ -37,7 +37,7 @@ public class Moto {
     @Enumerated(EnumType.STRING)
     private TypesEnum.StatusMoto statusMoto;
 
-    @NotBlank(message = "RFID não pode ser nulo")
+    @NotBlank(message = "{moto.rfidTag.notblank}")
     private String rfidTag;
 
     private LocalDate dataAquisicao;
@@ -50,3 +50,4 @@ public class Moto {
     private String caracteristicasVisuais; //JSON da foto será como string
 
 }
+

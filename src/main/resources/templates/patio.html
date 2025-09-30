@@ -21,12 +21,13 @@
         </div>
 
         <div class="flex items-center justify-between">
-            <h1 class="text-2xl font-bold">Pátios</h1>
+            <h1 class="text-2xl font-bold" th:text="#{patio.dashboard.title}"></h1>
             <div class="flex gap-2">
-                <a href="/patio/formPatio" class="btn btn-primary btn-sm">Cadastrar Pátio</a>
+                <a href="/patio/formPatio" class="btn btn-primary btn-sm" th:text="#{patio.new}"></a>
             </div>
         </div>
 
+        <!-- Cards dos patios-->
         <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6">
             <div th:each="patio : ${patios}"
             class="card bg-base-100 shadow-lg border-2 border-primary p-4 flex flex-col justify-between">
@@ -34,25 +35,23 @@
             <div>
                     <h2 class="text-lg text-primary font-bold" th:text="${patio.nome}"></h2>
                     <h2 class="text-lg text-primary font-bold" th:text="${patio.id}"></h2>
-                    <p th:text="${motosPorPatio[patio.id] ?: 0} + ' / ' + patio.capacidade"></p>
-                    <p class="text-sm opacity-70" th:text="${patio.endereco}">Endereço</p>
+                    <p th:text="${motosPorPatio[patio.id] ?: 0} + ' / ' + patio.capacidade" th:text="#{patio.totalMotos}"></p>
+                    <p class="text-sm opacity-70" th:text="${patio.endereco}"></p>
                     <p class="text-sm opacity-70">
-                        <span th:text="${patio.cidade}">Cidade</span> -
-                        <span th:text="${patio.estado}">Estado</span>
+                        <span th:text="${patio.cidade}" th:text="#{patio.cidade}"></span> -
+                        <span th:text="${patio.estado}" th:text="#{patio.estado}"></span>
                     </p>
-                    <p class="text-sm opacity-50">País: <span th:text="${patio.pais}">Brasil</span></p>
-                    <p class="text-sm opacity-50">
-                        Dimensão:
+                    <p class="text-sm opacity-50">País: <span th:text="${patio.pais}" th:text="#{patio.pais}"></span></p>
+                    <p class="text-sm opacity-50" th:text="#{patio.dimensao}">
                         <span th:text="${patio.dimensaoX}">0</span> x
-                        <span th:text="${patio.dimensaoY}">0</span> metros
+                        <span th:text="${patio.dimensaoY}">0</span>
                     </p>
                 <div class="mt-4 flex justify-end">
-                    <a th:href="@{'/patio/formPatio/' + ${patio.id}}" class="btn btn-sm btn-ghost">Editar</a>
+                    <a th:href="@{'/patio/formPatio/' + ${patio.id}}" class="btn btn-sm btn-ghost" th:text="#{edit}"></a>
                     <form method="post" th:action="${'/patio/' + patio.id}">
                         <input type="hidden" name="_method" value="DELETE" />
-                        <button class="btn btn-sm btn-ghost" >apagar</button>
+                        <button class="btn btn-sm btn-ghost" th:text="#{delete}"></button>
                     </form>
-
                 </div>
                 </div>
             </div>

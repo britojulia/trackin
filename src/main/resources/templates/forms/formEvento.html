@@ -16,33 +16,30 @@
     <form class="w-full max-w-md" method="post" th:action="@{/evento/formEvento}" th:object="${evento}">
 
         <fieldset class="fieldset">
-            <legend class="fieldset-legend">Tipo de Evento</legend>
-            <input th:field="*{tipo}" type="text" class="input" placeholder="Ex: Entrada, Manutenção" required />
-            <p class="label">Campo obrigatório</p>
+            <legend class="fieldset-legend" th:text="#{evento.tipo}"></legend>
+            <input th:field="*{tipo}" type="text" class="input"/>
         </fieldset>
 
         <fieldset class="fieldset">
-            <legend class="fieldset-legend">Data e Hora do Evento</legend>
-            <input th:field="*{timesTamp}" type="datetime-local" class="input" required />
-            <p class="label">Campo obrigatório</p>
+            <legend class="fieldset-legend" th:text="#{evento.data}"></legend>
+            <input th:field="*{timesTamp}" type="datetime-local" class="input"/>
         </fieldset>
 
         <fieldset class="fieldset">
-            <legend class="fieldset-legend">Observação</legend>
-            <textarea th:field="*{observacao}" class="input" placeholder="Observações"></textarea>
+            <legend class="fieldset-legend" th:text="#{evento.observacao}"></legend>
+            <textarea th:field="*{observacao}" class="input"></textarea>
         </fieldset>
 
         <fieldset class="fieldset">
-            <legend class="fieldset-legend">Fonte do Evento</legend>
+            <legend class="fieldset-legend" th:text="#{evento.fonte}"></legend>
             <select th:field="*{fonteEvento}" class="select select-bordered" required>
                 <option th:each="fonte : ${fonteEvento}" th:value="${fonte}" th:text="${fonte}"></option>
             </select>
-            <p class="label">Escolha a fonte do evento</p>
         </fieldset>
 
         <div class="space-x-4 mt-4">
-            <a href="/evento" class="btn btn-neutral">Cancelar</a>
-            <button type="submit" class="btn btn-primary">Salvar</button>
+            <a href="/evento" class="btn btn-neutral" th:text="#{cancel}"></a>
+            <button type="submit" class="btn btn-primary" th:text="#{save}"></button>
         </div>
     </form>
 </main>

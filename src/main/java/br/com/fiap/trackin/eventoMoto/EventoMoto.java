@@ -21,15 +21,15 @@ public class EventoMoto {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotBlank(message = "Tipo de veento não pode ser nulo")
+    @NotBlank(message = "{evento.tipo.notblank}")
     private String tipo; //tipo de evento - entrada, saída, manutenção etc
 
     private LocalDateTime timesTamp;
 
     private String observacao;
 
-    @NotNull(message = "fonte do evento não pode ser nulo")
+    @NotNull(message = "{evento.fonteEvento.notnull}")
     @Enumerated(EnumType.STRING)
     private TypesEnum.FonteEvento fonteEvento; //Sistema, Manual, VisaoComputacional, RFID
-
 }
+

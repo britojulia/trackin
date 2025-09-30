@@ -20,47 +20,49 @@
         </div>
 
         <div class="flex items-center justify-between">
-            <h1 class="text-2xl font-bold">Dashboard de Eventos</h1>
+            <h1 class="text-2xl font-bold" th:text="#{evento.dashboard.title}"></h1>
             <div class="flex gap-2">
-                <a href="/evento/formEvento" class="btn btn-primary btn-sm">Cadastrar Evento</a>
+                <a href="/evento/formEvento" class="btn btn-primary btn-sm" th:text="#{evento.new}"></a>
             </div>
         </div>
 
         <!-- Indicadores -->
         <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
             <div class="card bg-primary text-primary-content p-4">
-                <h2 class="text-lg font-bold">Total de Eventos</h2>
+                <h2 class="text-lg font-bold" th:text="#{evento.totalEventos}"></h2>
                 <p class="text-2xl font-bold" th:text="${totalEventos}">0</p>
             </div>
 
             <div class="card bg-secondary text-secondary-content p-4">
-                <h2 class="text-lg font-bold">Último Evento</h2>
+                <h2 class="text-lg font-bold" th:text="#{evento.ultimoEvento}"></h2>
                 <p class="text-sm" th:text="${ultimoEvento != null ? ultimoEvento.tipo : '--'}">--</p>
             </div>
         </div>
 
+
+        <!-- Lista de eventos -->
         <div class="card bg-base-100 shadow-md">
             <div class="flex items-center justify-between p-4 border-b border-base-200">
-                <h2 class="text-2xl font-bold text-primary p-4">Eventos</h2>
+                <h2 class="text-2xl font-bold text-primary p-4" th:text="#{evento.title}"></h2>
             </div>
             <ul class="p-4 space-y-2">
                 <li th:each="evento : ${eventos}"
                     class="flex items-center justify-between p-3 bg-base-200 rounded-md shadow-sm">
                     <div>
-                        <div class="font-semibold" th:text="${evento.tipo}">Tipo Evento</div>
-                        <div class="text-xs opacity-70" th:text="${evento.timesTamp}">00/00/0000</div>
-                        <div class="text-xs opacity-50">
-                            Fonte: <span th:text="${evento.fonteEvento}">Manual</span>
+                        <div class="font-semibold" th:text="${evento.tipo}"></div>
+                        <div class="text-xs opacity-70" th:text="${evento.timesTamp}"></div>
+                        <div class="text-xs opacity-50" th:text="#{evento.fonte}">
+                             <span th:text="${evento.fonteEvento}"></span>
                         </div>
-                        <div class="text-xs opacity-50" >
-                            Observação: <span th:text="${evento.observacao}"></span>
+                        <div class="text-xs opacity-50" th:text="#{evento.observacao}" >
+                             <span th:text="${evento.observacao}"></span>
                         </div>
                     </div>
                     <div class="flex gap-2">
-                        <a th:href="@{'/evento/formEvento/' + ${evento.id}}" class="btn btn-sm btn-ghost">Editar</a>
+                        <a th:href="@{'/evento/formEvento/' + ${evento.id}}" class="btn btn-sm btn-ghost" th:text="#{edit}"></a>
                         <form method="post" th:action="${'/evento/' + evento.id}">
                             <input type="hidden" name="_method" value="DELETE" />
-                            <button class="btn btn-sm btn-ghost" >apagar</button>
+                            <button class="btn btn-sm btn-ghost" th:text="#{delete}"></button>
                         </form>
                     </div>
                 </li>
