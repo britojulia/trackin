@@ -1,5 +1,6 @@
 package br.com.fiap.trackin.patio;
 
+import br.com.fiap.trackin.config.MessageHelper;
 import br.com.fiap.trackin.moto.MotoService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -23,6 +24,7 @@ public class PatioController {
     private final PatioService patioService;
     private final MotoService motoService;
     private final MessageSource messageSource;
+    private final MessageHelper messageHelper;
 
     @GetMapping
     public String index(Model model, @AuthenticationPrincipal OAuth2User user ) {
@@ -52,19 +54,15 @@ public class PatioController {
     @PostMapping("/formPatio")
     public String create(@Valid Patio patio, BindingResult result, RedirectAttributes redirect ){
         if(result.hasErrors()) return "formPatio";
-
-        var message = messageSource.getMessage("message.success", null, LocaleContextHolder.getLocale());
-
         patioService.save(patio);
-        redirect.addFlashAttribute("message", message);
+        redirect.addFlashAttribute("message", messageHelper.get("message.success"));
         return "redirect:/patio";
     }
 
     @DeleteMapping("{id}")
     public String delete(@PathVariable Long id, RedirectAttributes redirect ){
         patioService.deleteById(id);
-        var message = messageSource.getMessage("message.success", null, LocaleContextHolder.getLocale());
-        redirect.addFlashAttribute("message", message);
+        redirect.addFlashAttribute("message", messageHelper.get("message.delete.success"));
         return "redirect:/patio";
     }
 

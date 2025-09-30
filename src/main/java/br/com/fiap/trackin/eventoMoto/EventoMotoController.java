@@ -1,6 +1,8 @@
 package br.com.fiap.trackin.eventoMoto;
 
+import br.com.fiap.trackin.config.MessageHelper;
 import br.com.fiap.trackin.enuns.TypesEnum;
+import br.com.fiap.trackin.user.UserService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.MessageSource;
@@ -19,7 +21,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 public class EventoMotoController {
 
     private final EventoMotoService eventoMotoService;
-
+    private final MessageHelper messageHelper;
     private final MessageSource messageSource;
 
     @GetMapping
@@ -54,18 +56,17 @@ public class EventoMotoController {
     public String create(@Valid EventoMoto eventoMoto, BindingResult result, RedirectAttributes redirect ){
 
         if(result.hasErrors()) return "formEvento";
-
-        var message = messageSource.getMessage("message.success", null, LocaleContextHolder.getLocale());
         eventoMotoService.save(eventoMoto);
-        redirect.addFlashAttribute("message", message);
+
+        redirect.addFlashAttribute("message", messageHelper.get("message.success"));
         return "redirect:/evento";
     }
 
     @DeleteMapping("{id}")
     public String delete(@PathVariable Long id, RedirectAttributes redirect ){
-        var message = messageSource.getMessage("message.success", null, LocaleContextHolder.getLocale());
         eventoMotoService.deleteById(id);
-        redirect.addFlashAttribute("message", message);
+
+        redirect.addFlashAttribute("message", messageHelper.get("message.delete.success"));
         return "redirect:/evento";
     }
 }

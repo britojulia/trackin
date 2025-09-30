@@ -1,5 +1,6 @@
 package br.com.fiap.trackin.zonaPatio;
 
+import br.com.fiap.trackin.config.MessageHelper;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.MessageSource;
@@ -19,6 +20,7 @@ public class ZonaPatioController {
 
     private final ZonaPatioService zonaPatioService;
     private final MessageSource messageSource;
+    private final MessageHelper messageHelper;
 
     @GetMapping
     public String index(Model model, @AuthenticationPrincipal OAuth2User user) {
@@ -47,10 +49,8 @@ public class ZonaPatioController {
     public String create(@Valid ZonaPatio zonaPatio, BindingResult result, RedirectAttributes redirect ){
 
         if(result.hasErrors()) return "formZona";
-
-        var message = messageSource.getMessage("message.success", null, LocaleContextHolder.getLocale());
         zonaPatioService.save(zonaPatio);
-        redirect.addFlashAttribute("message", message);
+        redirect.addFlashAttribute("message", messageHelper.get("message.success"));
         return "redirect:/zonaPatio"; //301
     }
 
@@ -58,7 +58,7 @@ public class ZonaPatioController {
     public String delete(@PathVariable Long id, RedirectAttributes redirect ){
         var message = messageSource.getMessage("message.success", null, LocaleContextHolder.getLocale());
         zonaPatioService.deleteById(id);
-        redirect.addFlashAttribute("message", message);
+        redirect.addFlashAttribute("message", messageHelper.get("message.delete.success"));
         return "redirect:/zonaPatio";
     }
 }

@@ -1,5 +1,6 @@
 package br.com.fiap.trackin.moto;
 
+import br.com.fiap.trackin.config.MessageHelper;
 import br.com.fiap.trackin.enuns.TypesEnum;
 import br.com.fiap.trackin.eventoMoto.EventoMotoService;
 import jakarta.validation.Valid;
@@ -22,6 +23,7 @@ public class MotoController {
     private final MotoService motoService;
     private final EventoMotoService eventoMotoService;
     private final MessageSource messageSource;
+    private final MessageHelper messageHelper;
 
 
     @GetMapping
@@ -59,42 +61,36 @@ public class MotoController {
             return "forms/formMoto";
         }
 
-        var message = messageSource.getMessage("message.success", null, LocaleContextHolder.getLocale());
-
         motoService.save(moto);
-        redirect.addFlashAttribute("message", message);
+        redirect.addFlashAttribute("message", messageHelper.get("message.success"));
         return "redirect:/moto"; //301
     }
 
     @DeleteMapping("{id}")
     public String delete(@PathVariable Long id, RedirectAttributes redirect ){
-        var message = messageSource.getMessage("message.success", null, LocaleContextHolder.getLocale());
         motoService.deleteById(id);
-        redirect.addFlashAttribute("message", message);
+        redirect.addFlashAttribute("message", messageHelper.get("message.delete.success"));
         return "redirect:/moto";
     }
 
     @PutMapping("/manutencao/{id}")
     public String enviarManutencao(@PathVariable Long id, RedirectAttributes redirect) {
-        var message = messageSource.getMessage("message.success", null, LocaleContextHolder.getLocale());
         motoService.statusManutencao(id);
-        redirect.addFlashAttribute("message", message);
+        redirect.addFlashAttribute("message", messageHelper.get("message.success"));
         return "redirect:/moto";
     }
 
     @PutMapping("/disponivel/{id}")
     public String enviarDisponivel(@PathVariable Long id, RedirectAttributes redirect) {
-        var message = messageSource.getMessage("message.success", null, LocaleContextHolder.getLocale());
         motoService.statusDisponivel(id);
-        redirect.addFlashAttribute("message", message);
+        redirect.addFlashAttribute("message", messageHelper.get("message.success"));
         return "redirect:/moto";
     }
 
     @PutMapping("/alugada/{id}")
     public String enviarAlugada(@PathVariable Long id, RedirectAttributes redirect) {
-        var message = messageSource.getMessage("message.success", null, LocaleContextHolder.getLocale());
         motoService.statusAlugada(id);
-        redirect.addFlashAttribute("message", message);
+        redirect.addFlashAttribute("message", messageHelper.get("message.success"));
         return "redirect:/moto";
     }
 

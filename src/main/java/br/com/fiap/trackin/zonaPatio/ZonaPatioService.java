@@ -1,5 +1,6 @@
 package br.com.fiap.trackin.zonaPatio;
 
+import br.com.fiap.trackin.config.MessageHelper;
 import br.com.fiap.trackin.patio.Patio;
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,9 +12,11 @@ import java.util.List;
 public class ZonaPatioService {
 
     private final ZonaPatioRepository zonaPatioRepository;
+    private final MessageHelper messageHelper;
 
-    public ZonaPatioService(ZonaPatioRepository zonaPatioRepository) {
+    public ZonaPatioService(ZonaPatioRepository zonaPatioRepository, MessageHelper messageHelper) {
         this.zonaPatioRepository = zonaPatioRepository;
+        this.messageHelper = messageHelper;
     }
 
     public List<ZonaPatio> getAllZonaPatios() {
@@ -30,7 +33,7 @@ public class ZonaPatioService {
 
     public ZonaPatio getZona(Long id){
         return zonaPatioRepository.findById(id).orElseThrow(
-                () -> new EntityNotFoundException("zona de patio não encontrada")
+                () -> new EntityNotFoundException(messageHelper.get("message.notFound"))
         );
     }
 }

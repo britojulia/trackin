@@ -1,5 +1,6 @@
 package br.com.fiap.trackin.moto;
 
+import br.com.fiap.trackin.config.MessageHelper;
 import br.com.fiap.trackin.enuns.TypesEnum;
 import br.com.fiap.trackin.eventoMoto.EventoMoto;
 import br.com.fiap.trackin.eventoMoto.EventoMotoService;
@@ -18,10 +19,12 @@ public class MotoService {
 
     private MotoRepository motoRepository;
     private EventoMotoService eventoMotoService;
+    private final MessageHelper messageHelper;
 
-    public MotoService(MotoRepository motoRepository, EventoMotoService eventoMotoService){
+    public MotoService(MotoRepository motoRepository, EventoMotoService eventoMotoService, MessageHelper messageHelper){
         this.motoRepository=motoRepository;
         this.eventoMotoService = eventoMotoService;
+        this.messageHelper = messageHelper;
     }
 
     public List<Moto> getAllMotos(){
@@ -90,7 +93,7 @@ public class MotoService {
 
     public Moto getMoto(Long id){
         return motoRepository.findById(id).orElseThrow(
-                () -> new EntityNotFoundException("moto não encontrada")
+                () -> new EntityNotFoundException(messageHelper.get("message.notFound"))
         );
     }
 

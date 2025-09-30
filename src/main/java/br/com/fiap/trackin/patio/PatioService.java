@@ -1,5 +1,6 @@
 package br.com.fiap.trackin.patio;
 
+import br.com.fiap.trackin.config.MessageHelper;
 import br.com.fiap.trackin.moto.Moto;
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.stereotype.Service;
@@ -10,9 +11,11 @@ import java.util.Map;
 @Service
 public class PatioService {
     private final PatioRepository patioRepository;
+    private final MessageHelper messageHelper;
 
-    public PatioService(PatioRepository patioRepository) {
+    public PatioService(PatioRepository patioRepository, MessageHelper messageHelper) {
         this.patioRepository = patioRepository;
+        this.messageHelper = messageHelper;
     }
 
     public List<Patio> getAllPatios() {
@@ -29,7 +32,7 @@ public class PatioService {
 
     public Patio getPatio(Long id){
         return patioRepository.findById(id).orElseThrow(
-                () -> new EntityNotFoundException("patio não encontrada")
+                () -> new EntityNotFoundException(messageHelper.get("message.notFound"))
         );
     }
 }
