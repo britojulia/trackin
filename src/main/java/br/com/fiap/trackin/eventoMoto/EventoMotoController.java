@@ -5,8 +5,11 @@ import br.com.fiap.trackin.moto.Moto;
 import br.com.fiap.trackin.moto.MotoService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import org.springframework.context.MessageSource;
+import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -16,6 +19,8 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 public class EventoMotoController {
 
     private final EventoMotoService eventoMotoService;
+
+    private final MessageSource messageSource;
 
     @GetMapping
     public String index(Model model) {
@@ -43,10 +48,14 @@ public class EventoMotoController {
     }
 
     @PostMapping("/formEvento")
-    public String create(@Valid EventoMoto eventoMoto, RedirectAttributes redirect ){ //session
+    public String create(@Valid EventoMoto eventoMoto, BindingResult result, RedirectAttributes redirect ){
+
+        if(result.hasErrors()) return "formEvento";
+
+        var message = messageSource.getMessage("message.success", null, LocaleContextHolder.getLocale());
         eventoMotoService.save(eventoMoto);
-        redirect.addFlashAttribute("message", "Novo evento cadastrado com sucesso!");
-        return "redirect:/evento"; //301
+        redirect.addFlashAttribute("message", message);
+        return "redirect:/evento";
     }
 
     @DeleteMapping("{id}")

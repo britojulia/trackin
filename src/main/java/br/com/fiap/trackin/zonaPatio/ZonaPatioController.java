@@ -1,12 +1,12 @@
 package br.com.fiap.trackin.zonaPatio;
 
-import br.com.fiap.trackin.enuns.TypesEnum;
-import br.com.fiap.trackin.moto.Moto;
-import br.com.fiap.trackin.patio.Patio;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import org.springframework.context.MessageSource;
+import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -16,6 +16,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 public class ZonaPatioController {
 
     private final ZonaPatioService zonaPatioService;
+    private final MessageSource messageSource;
 
     @GetMapping
     public String index(Model model) {
@@ -38,9 +39,13 @@ public class ZonaPatioController {
     }
 
     @PostMapping("/formZona")
-    public String create(@Valid ZonaPatio zonaPatio, RedirectAttributes redirect ){ //session
+    public String create(@Valid ZonaPatio zonaPatio, BindingResult result, RedirectAttributes redirect ){
+
+        if(result.hasErrors()) return "formZona";
+
+        var message = messageSource.getMessage("message.success", null, LocaleContextHolder.getLocale());
         zonaPatioService.save(zonaPatio);
-        redirect.addFlashAttribute("message", "zona do patio cadastrada com sucesso!");
+        redirect.addFlashAttribute("message", message);
         return "redirect:/zonaPatio"; //301
     }
 

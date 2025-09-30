@@ -17,24 +17,28 @@
 
         <fieldset class="fieldset">
             <legend class="fieldset-legend" th:text="#{evento.tipo}"></legend>
-            <input th:field="*{tipo}" type="text" class="input"/>
+            <input th:field="*{tipo}" th:errorclass="input-error" type="text" class="input"/>
+            <p class="label text-error" th:errors="*{tipo}"></p>
         </fieldset>
 
         <fieldset class="fieldset">
             <legend class="fieldset-legend" th:text="#{evento.data}"></legend>
-            <input th:field="*{timesTamp}" type="datetime-local" class="input"/>
+            <input th:field="*{timesTamp}" th:errorclass="input-error" type="datetime-local" class="input"/>
+            <p class="label text-error" th:errors="*{timesTamp}"></p>
         </fieldset>
 
         <fieldset class="fieldset">
             <legend class="fieldset-legend" th:text="#{evento.observacao}"></legend>
-            <textarea th:field="*{observacao}" class="input"></textarea>
+            <textarea th:field="*{observacao}" th:errorclass="textarea-error" class="input"></textarea>
+            <p class="label text-error" th:errors="*{observacao}"></p>
         </fieldset>
 
         <fieldset class="fieldset">
             <legend class="fieldset-legend" th:text="#{evento.fonte}"></legend>
-            <select th:field="*{fonteEvento}" class="select select-bordered" required>
+            <select th:field="*{fonteEvento}" th:errorclass="select-error" class="select select-bordered" required>
                 <option th:each="fonte : ${fonteEvento}" th:value="${fonte}" th:text="${fonte}"></option>
             </select>
+            <p class="label text-error" th:errors="*{fonteEvento}"></p>
         </fieldset>
 
         <div class="space-x-4 mt-4">

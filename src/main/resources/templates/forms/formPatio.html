@@ -17,38 +17,46 @@
 
         <fieldset class="fieldset">
             <legend class="fieldset-legend" th:text="#{patio.nome}"></legend>
-            <input th:field="*{nome}" type="text" class="input" />
+            <input th:field="*{nome}" th:errorclass="input-error" type="text" class="input" />
+            <p class="label text-error" th:errors="*{nome}"></p>
         </fieldset>
 
         <fieldset class="fieldset">
             <legend class="fieldset-legend" th:text="#{patio.endereco}"></legend>
-            <input th:field="*{endereco}" type="text" class="input"/>
+            <input th:field="*{endereco}" th:errorclass="input-error" type="text" class="input"/>
+            <p class="label text-error" th:errors="*{endereco}"></p>
         </fieldset>
 
         <fieldset class="fieldset">
             <legend class="fieldset-legend" th:text="#{patio.capacidade}"></legend>
-            <input th:field="*{capacidadeMaxima}" type="int" class="input" />
+            <input th:field="*{capacidadeMaxima}" th:errorclass="input-error" type="int" class="input" />
+            <p class="label text-error" th:errors="*{capacidadeMaxima}"></p>
         </fieldset>
 
         <fieldset class="fieldset">
             <legend class="fieldset-legend"th:text="#{patio.cidade}"></legend>
-            <input th:field="*{cidade}" type="text" class="input" />
+            <input th:field="*{cidade}" th:errorclass="input-error" type="text" class="input" />
+            <p class="label text-error" th:errors="*{cidade}"></p>
         </fieldset>
 
         <fieldset class="fieldset">
             <legend class="fieldset-legend"th:text="#{patio.estado}"></legend>
-            <input th:field="*{estado}" type="text" class="input" />
+            <input th:field="*{estado}" th:errorclass="input-error" type="text" class="input" />
+            <p class="label text-error" th:errors="*{estado}"></p>
         </fieldset>
 
         <fieldset class="fieldset">
             <legend class="fieldset-legend"th:text="#{patio.pais}"></legend>
-            <input th:field="*{pais}" type="text" class="input"/>
+            <input th:field="*{pais}" th:errorclass="input-error" type="text" class="input"/>
+            <p class="label text-error" th:errors="*{pais}"></p>
         </fieldset>
 
         <fieldset class="fieldset">
             <legend class="fieldset-legend" th:text="#{patio.dimensao}"></legend>
-            <input th:field="*{dimensaoX}" type="number" step="0.1" class="input" />
-            <input th:field="*{dimensaoY}" type="number" step="0.1" class="input mt-2"/>
+            <input th:field="*{dimensaoX}" type="number" step="0.1" th:errorclass="input-error" class="input" />
+            <p class="label text-error" th:errors="*{dimensaoX}"></p>
+            <input th:field="*{dimensaoY}" type="number" step="0.1" th:errorclass="input-error" class="input mt-2"/>
+            <p class="label text-error" th:errors="*{dimensaoY}"></p>
         </fieldset>
 
         <div class="space-x-4 mt-4">

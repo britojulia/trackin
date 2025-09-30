@@ -1,12 +1,13 @@
 package br.com.fiap.trackin.patio;
 
-import br.com.fiap.trackin.enuns.TypesEnum;
-import br.com.fiap.trackin.moto.Moto;
 import br.com.fiap.trackin.moto.MotoService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import org.springframework.context.MessageSource;
+import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -19,6 +20,7 @@ public class PatioController {
 
     private final PatioService patioService;
     private final MotoService motoService;
+    private final MessageSource messageSource;
 
     @GetMapping
     public String index(Model model) {
@@ -43,10 +45,13 @@ public class PatioController {
     }
 
     @PostMapping("/formPatio")
-    public String create(@Valid Patio patio, RedirectAttributes redirect ){ //session
+    public String create(@Valid Patio patio, BindingResult result, RedirectAttributes redirect ){
+        if(result.hasErrors()) return "formPatio";
+
+        var message = messageSource.getMessage("message.success", null, LocaleContextHolder.getLocale());
         patioService.save(patio);
-        redirect.addFlashAttribute("message", "patio cadastrado com sucesso!");
-        return "redirect:/patio"; //301
+        redirect.addFlashAttribute("message", message);
+        return "redirect:/patio";
     }
 
     @DeleteMapping("{id}")
