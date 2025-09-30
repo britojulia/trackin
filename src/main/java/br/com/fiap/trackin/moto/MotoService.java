@@ -42,6 +42,13 @@ public class MotoService {
                 .collect(Collectors.groupingBy(m -> m.getPatio().getId(), Collectors.counting()));
     }
 
+    public long contarMotosEmManutencao() {
+        return getAllMotos().stream()
+                .filter(m -> m.getStatusMoto() == TypesEnum.StatusMoto.EM_MANUTENCAO)
+                .count();
+    }
+
+
     public void statusManutencao(Long id) {
         Moto moto = getMoto(id);
         moto.setStatusMoto(TypesEnum.StatusMoto.EM_MANUTENCAO);

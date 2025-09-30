@@ -25,11 +25,8 @@ public class MotoController {
     public String index(Model model) {
         var motos = motoService.getAllMotos();
         model.addAttribute("motos", motos);
-        long emManutencao = motos.stream()
-                .filter(m -> m.getStatusMoto() == TypesEnum.StatusMoto.EM_MANUTENCAO)
-                .count();
         model.addAttribute("totalMotos", motoService.getAllMotos().size());
-        model.addAttribute("emManutencao", emManutencao);
+        model.addAttribute("emManutencao", motoService.contarMotosEmManutencao());
         model.addAttribute("totalEventos", eventoMotoService.getAllEventos().size());
         return "index";
     }
