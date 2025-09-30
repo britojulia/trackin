@@ -62,29 +62,33 @@ public class MotoController {
 
     @DeleteMapping("{id}")
     public String delete(@PathVariable Long id, RedirectAttributes redirect ){
+        var message = messageSource.getMessage("message.success", null, LocaleContextHolder.getLocale());
         motoService.deleteById(id);
-        redirect.addFlashAttribute("message", "message.success");
+        redirect.addFlashAttribute("message", message);
         return "redirect:/moto";
     }
 
     @PutMapping("/manutencao/{id}")
     public String enviarManutencao(@PathVariable Long id, RedirectAttributes redirect) {
+        var message = messageSource.getMessage("message.success", null, LocaleContextHolder.getLocale());
         motoService.statusManutencao(id);
-        redirect.addFlashAttribute("message", "message.success");
+        redirect.addFlashAttribute("message", message);
         return "redirect:/moto";
     }
 
     @PutMapping("/disponivel/{id}")
     public String enviarDisponivel(@PathVariable Long id, RedirectAttributes redirect) {
+        var message = messageSource.getMessage("message.success", null, LocaleContextHolder.getLocale());
         motoService.statusDisponivel(id);
-        redirect.addFlashAttribute("message", "message.success");
+        redirect.addFlashAttribute("message", message);
         return "redirect:/moto";
     }
 
     @PutMapping("/alugada/{id}")
     public String enviarAlugada(@PathVariable Long id, RedirectAttributes redirect) {
+        var message = messageSource.getMessage("message.success", null, LocaleContextHolder.getLocale());
         motoService.statusAlugada(id);
-        redirect.addFlashAttribute("message", "message.success");
+        redirect.addFlashAttribute("message", message);
         return "redirect:/moto";
     }
 

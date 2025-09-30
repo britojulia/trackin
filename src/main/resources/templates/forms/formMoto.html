@@ -45,11 +45,12 @@
 
         <fieldset class="fieldset">
             <legend class="fieldset-legend" th:text="#{moto.statusMoto}"></legend>
-            <select th:field="*{statusMoto}"  th:errorclass="select-error" class="select select-bordered">
+            <select th:field="*{statusMoto}" th:errorclass="select-error" class="select select-bordered">
                 <option th:each="status : ${statusMotos}" th:value="${status}" th:text="${status}"></option>
             </select>
             <p class="label text-error" th:errors="*{statusMoto}"></p>
         </fieldset>
+
 
         <fieldset class="fieldset">
             <legend class="fieldset-legend" th:text="#{moto.rfidTag}"></legend>
@@ -60,7 +61,7 @@
         <fieldset class="fieldset">
             <legend class="fieldset-legend" th:text="#{moto.dataAquisicao}"></legend>
             <input th:field="*{dataAquisicao}" th:errorclass="input-error" type="date" class="input">
-            <p class="label text-error" th:errors="*{dataAquisicao}"></p>/>
+            <p class="label text-error" th:errors="*{dataAquisicao}"></p>
         </fieldset>
 
         <fieldset class="fieldset">

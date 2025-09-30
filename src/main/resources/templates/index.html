@@ -58,27 +58,32 @@
         <ul class="list bg-base-100 rounded-b-box p-4 space-y-2">
             <li th:each="moto : ${motos}" class="flex items-center justify-between p-3 bg-base-200 rounded-md shadow-sm">
                 <div>
-                    <div class="font-semibold" th:text="${moto.placa}"></div>
-                    <div class="text-xs uppercase font-semibold opacity-60" th:text="${moto.modelo}"></div>
-                    <div class="text-xs uppercase font-semibold opacity-60" th:text="${moto.ano}"></div>
-                    <div class="text-xs uppercase font-semibold opacity-60" th:text="${moto.caracteristicasVisuais}"></div>
-                    <div class="text-xs uppercase font-semibold opacity-60" th:text="${moto.dataAquisicao}"></div>
-                    <div class="text-xs uppercase font-semibold opacity-60" th:text="${moto.rfidTag}"></div>
-                    <div class="text-xs uppercase font-semibold opacity-60" th:text="${moto.statusMoto}"></div>
-                    <div class="text-xs uppercase font-semibold opacity-60" th:text="${moto.ultimaManutencao}"></div>
+                    <p class="py-1 font-semibold">
+                        <span th:text="${moto.placa}"></span> -
+                        <span th:text="${moto.modelo}"></span> -
+                        <span th:text="${moto.ano}"></span> -
+                        <span th:text="'ID patio: ' + ${moto.patio.id}"></spam> </span>
+                    </p>
+                    <p class="py-1 text-xs uppercase font-semibold opacity-60">
+                        <span th:text="${moto.caracteristicasVisuais}"></span> |
+                        <span th:text="${moto.dataAquisicao}"></span> |
+                        <span th:text="${moto.rfidTag}"></span> |
+                        <span th:text="${moto.statusMoto}"></span> |
+                        <span th:text="${moto.ultimaManutencao}"></span>
+                    </p>
                 </div>
                 <div class="flex gap-2">
                     <form method="post" th:action="@{'/moto/manutencao/' + ${moto.id}}">
                         <input type="hidden" name="_method" value="PUT" />
-                        <button class="btn btn-info" th:text="#{moto.status.manutencao}"></button>
+                        <button class="btn btn-neutral" th:text="#{moto.status.manutencao}"></button>
                     </form>
                     <form method="post" th:action="@{'/moto/disponivel/' + ${moto.id}}">
                         <input type="hidden" name="_method" value="PUT" />
-                        <button class="btn btn-info" th:text="#{moto.status.disponivel}"></button>
+                        <button class="btn btn-neutral" th:text="#{moto.status.disponivel}"></button>
                     </form>
                     <form method="post" th:action="@{'/moto/alugada/' + ${moto.id}}">
                         <input type="hidden" name="_method" value="PUT" />
-                        <button class="btn btn-info" th:text="#{moto.status.alugada}"></button>
+                        <button class="btn btn-neutral" th:text="#{moto.status.alugada}"></button>
                     </form>
                     <a th:href="@{'/moto/formMoto/' + ${moto.id}}" class="btn btn-sm btn-ghost" th:text="#{edit}"></a>
                     <form method="post" th:action="${'/moto/' + moto.id}">

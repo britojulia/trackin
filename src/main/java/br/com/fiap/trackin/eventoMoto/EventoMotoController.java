@@ -44,7 +44,7 @@ public class EventoMotoController {
         EventoMoto evento = eventoMotoService.getEvento(id);
         model.addAttribute("evento", evento);
         model.addAttribute("fonteEvento", TypesEnum.FonteEvento.values());
-        return "forms/formMoto";
+        return "forms/formEvento";
     }
 
     @PostMapping("/formEvento")
@@ -60,8 +60,9 @@ public class EventoMotoController {
 
     @DeleteMapping("{id}")
     public String delete(@PathVariable Long id, RedirectAttributes redirect ){
+        var message = messageSource.getMessage("message.success", null, LocaleContextHolder.getLocale());
         eventoMotoService.deleteById(id);
-        redirect.addFlashAttribute("message", "Evento deletado com sucesso!");
+        redirect.addFlashAttribute("message", message);
         return "redirect:/evento";
     }
 }

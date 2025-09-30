@@ -33,8 +33,8 @@ public class ZonaPatioController {
 
     @GetMapping("/formZona/{id}")
     public String editForm(@PathVariable Long id, Model model) {
-        ZonaPatio zonaPatio = zonaPatioService.getZona(id);
-        model.addAttribute("zonaPatio", zonaPatio);
+        ZonaPatio zona = zonaPatioService.getZona(id);
+        model.addAttribute("zona", zona);
         return "forms/formZona";
     }
 
@@ -51,8 +51,9 @@ public class ZonaPatioController {
 
     @DeleteMapping("{id}")
     public String delete(@PathVariable Long id, RedirectAttributes redirect ){
+        var message = messageSource.getMessage("message.success", null, LocaleContextHolder.getLocale());
         zonaPatioService.deleteById(id);
-        redirect.addFlashAttribute("message", "Patio deletado com sucesso!");
+        redirect.addFlashAttribute("message", message);
         return "redirect:/zonaPatio";
     }
 }

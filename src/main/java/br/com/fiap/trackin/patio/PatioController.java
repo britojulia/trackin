@@ -57,7 +57,8 @@ public class PatioController {
     @DeleteMapping("{id}")
     public String delete(@PathVariable Long id, RedirectAttributes redirect ){
         patioService.deleteById(id);
-        redirect.addFlashAttribute("message", "Patio deletado com sucesso!");
+        var message = messageSource.getMessage("message.success", null, LocaleContextHolder.getLocale());
+        redirect.addFlashAttribute("message", message);
         return "redirect:/patio";
     }
 

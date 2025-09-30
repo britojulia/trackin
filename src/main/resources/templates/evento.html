@@ -2,7 +2,7 @@
 <html lang="en" data-theme="forest">
 <head>
     <meta charset="UTF-8">
-    <title>Infos Moto</title>
+    <title>Evento</title>
     <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <link href="https://cdn.jsdelivr.net/npm/daisyui@5/themes.css" rel="stylesheet" type="text/css" />
@@ -33,7 +33,7 @@
                 <p class="text-2xl font-bold" th:text="${totalEventos}">0</p>
             </div>
 
-            <div class="card bg-secondary text-secondary-content p-4">
+            <div class="card bg-neutral p-4">
                 <h2 class="text-lg font-bold" th:text="#{evento.ultimoEvento}"></h2>
                 <p class="text-sm" th:text="${ultimoEvento != null ? ultimoEvento.tipo : '--'}">--</p>
             </div>
@@ -51,11 +51,14 @@
                     <div>
                         <div class="font-semibold" th:text="${evento.tipo}"></div>
                         <div class="text-xs opacity-70" th:text="${evento.timesTamp}"></div>
-                        <div class="text-xs opacity-50" th:text="#{evento.fonte}">
-                             <span th:text="${evento.fonteEvento}"></span>
+                        <div class="text-xs opacity-50">
+                            <span th:text="#{evento.fonte}"></span>:
+                            <span th:text="${evento.fonteEvento}"></span>
                         </div>
-                        <div class="text-xs opacity-50" th:text="#{evento.observacao}" >
-                             <span th:text="${evento.observacao}"></span>
+
+                        <div class="text-xs opacity-50">
+                            <span th:text="#{evento.observacao}"></span>:
+                            <span th:text="${evento.observacao}"></span>
                         </div>
                     </div>
                     <div class="flex gap-2">

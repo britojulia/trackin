@@ -33,15 +33,18 @@
                  th:style="'border: 2px solid' + ${zona.cor}" >
                 <div>
                     <h2 class="text-lg font-bold" th:text="${zona.nome}"></h2>
-                    <p class="text-sm opacity-70" th:text="#{zonaPatio.coordenadaInicial}">
-                        <span th:text="${zona.coordenadaInicialX}">0</span>
+                    <p class="text-sm opacity-70">
+                        <span th:text="#{zonaPatio.coordenadaInicial}"></span>:
+                        <span th:text="${zona.coordenadaInicialX}">0</span>,
                         <span th:text="${zona.coordenadaInicialY}">0</span>
                     </p>
-                    <p class="text-sm opacity-70" th:text="#{zonaPatio.coordenadaFinal}">
-                        <span th:text="${zona.coordenadaFinalX}">0</span>
+
+                    <p class="text-sm opacity-70">
+                        <span th:text="#{zonaPatio.coordenadaFinal}"></span>:
+                        <span th:text="${zona.coordenadaFinalX}">0</span>,
                         <span th:text="${zona.coordenadaFinalY}">0</span>
                     </p>
-                    <p class="text-sm opacity-50">Cor: <span th:text="${zona.cor}">#000000</span></p>
+                    <p class="text-sm opacity-50">Cor: <span th:text="#{zonaPatio.cor}">#000000</span></p>
                 </div>
                 <div class="mt-4 flex justify-end">
                     <a th:href="@{'/zonaPatio/formZona/' + ${zona.id}}" class="btn btn-sm btn-ghost" th:text="#{edit}"></a>
