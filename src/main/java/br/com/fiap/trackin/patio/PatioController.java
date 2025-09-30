@@ -2,6 +2,7 @@ package br.com.fiap.trackin.patio;
 
 import br.com.fiap.trackin.enuns.TypesEnum;
 import br.com.fiap.trackin.moto.Moto;
+import br.com.fiap.trackin.moto.MotoService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
@@ -9,16 +10,21 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import java.util.Map;
+
 @Controller
 @RequestMapping("/patio")
 @RequiredArgsConstructor
 public class PatioController {
 
     private final PatioService patioService;
+    private final MotoService motoService;
 
     @GetMapping
     public String index(Model model) {
         var patios = patioService.getAllPatios();
+        Map<Long, Long> motosPorPatio = motoService.contarMotosPorPatio();
+        model.addAttribute("motosPorPatio", motosPorPatio);
         model.addAttribute("patios", patios);
         return "patio";
     }

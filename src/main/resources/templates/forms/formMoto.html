@@ -32,6 +32,13 @@
         </fieldset>
 
         <fieldset class="fieldset">
+            <legend class="fieldset-legend">Patio da moto</legend>
+            <input th:field="*{patio}" type="number" class="input" placeholder="Patio id" />
+            <p class="label">Selecione o modelo</p>
+        </fieldset>
+
+
+        <fieldset class="fieldset">
             <legend class="fieldset-legend">Ano</legend>
             <input th:field="*{ano}" type="number" min="1900" max="2099" class="input" placeholder="Ano de fabricação" required />
             <p class="label">Campo obrigatório</p>

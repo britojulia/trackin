@@ -1,0 +1,11 @@
+ALTER TABLE zona_patio
+    ADD patio_id BIGINT;
+
+ALTER TABLE moto
+    ADD patio_id BIGINT;
+
+ALTER TABLE moto
+    ADD CONSTRAINT FK_MOTO_ON_PATIO FOREIGN KEY (patio_id) REFERENCES patio (id);
+
+ALTER TABLE zona_patio
+    ADD CONSTRAINT FK_ZONAPATIO_ON_PATIO FOREIGN KEY (patio_id) REFERENCES patio (id);

@@ -4,6 +4,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -24,6 +25,9 @@ public class Patio {
 
     @NotBlank(message = "Endereço não pode ser nulo")
     private String endereco;
+
+    @NotNull(message = "Capacidade máxima do pátio não pode ser nula")
+    private Integer capacidadeMaxima;
 
     private String cidade;
 

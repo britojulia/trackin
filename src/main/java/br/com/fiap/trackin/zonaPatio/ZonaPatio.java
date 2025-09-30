@@ -1,10 +1,9 @@
 package br.com.fiap.trackin.zonaPatio;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import br.com.fiap.trackin.patio.Patio;
+import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -22,6 +21,11 @@ public class ZonaPatio {
 
     @NotBlank(message = "nome da zona do pátio não pode ser nulo")
     private String nome; //Manutenção, Estacionamento, Lavagem, etc
+
+    @ManyToOne
+    @NotNull
+    @JoinColumn(name = "patio_id", nullable = false)
+    private Patio patio;
 
     private Double coordenadaInicialX;
 

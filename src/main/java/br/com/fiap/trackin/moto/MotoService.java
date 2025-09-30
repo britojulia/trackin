@@ -10,6 +10,8 @@ import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 @Service
 public class MotoService {
@@ -32,6 +34,12 @@ public class MotoService {
 
     public void deleteById(Long id){
         motoRepository.delete(getMoto(id));
+    }
+
+    public Map<Long, Long> contarMotosPorPatio() {
+        return getAllMotos().stream()
+                .filter(m -> m.getPatio() != null)
+                .collect(Collectors.groupingBy(m -> m.getPatio().getId(), Collectors.counting()));
     }
 
     public void statusManutencao(Long id) {

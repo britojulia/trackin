@@ -1,6 +1,7 @@
 package br.com.fiap.trackin.moto;
 
 import br.com.fiap.trackin.enuns.TypesEnum;
+import br.com.fiap.trackin.patio.Patio;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;
@@ -23,6 +24,10 @@ public class Moto {
 
     @NotBlank(message = "placa não pode ser nula")
     private String placa;
+
+    @ManyToOne
+    @JoinColumn(name = "patio_id")
+    private Patio patio;
 
     @NotBlank(message = "modelo não pode ser nulo")
     private String modelo;
