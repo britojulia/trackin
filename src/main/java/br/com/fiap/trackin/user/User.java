@@ -20,6 +20,8 @@ public class User {
 
     private String avatarUrl;
 
+    private String role;
+
     public User(String name, String email) {
         this.name = name;
         this.email = email;

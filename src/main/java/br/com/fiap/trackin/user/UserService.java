@@ -30,13 +30,21 @@ public class UserService {
 
         var user = userRepository.findByEmail(email);
 
+        // Define a role baseada no provider
+        String role = attrs.get("login") != null ? "ROLE_ADMIN" : "ROLE_USER"; // GitHub → admin, Google → user
+        System.out.println("Role atribuída ao usuário " + email + ": " + role);
+
+
         String emailTemp = email;
 
         return user.orElseGet(() -> {
             User newUser = new User();
             newUser.setEmail(emailTemp);
             newUser.setName(name != null ? name : "Usuário GitHub");
+            newUser.setRole(role);
             return userRepository.save(newUser);
         });
+
+
     }
 }
