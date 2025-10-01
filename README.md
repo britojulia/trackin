@@ -40,11 +40,11 @@ cd trackin
 
 ### 3. Crie a conexão com o banco de dados
 
-No canto superior direito → clique no botão Database → clique no + → Datasource.
-Selecione PostgreSQL.
-Insira usuário, senha e nome do database conforme definido no compose.yaml.
-Clique em Test Connection e depois em Apply.
-Rode o banco de dados
+- No canto superior direito → clique no botão Database → clique no + → Datasource.
+- Selecione PostgreSQL.
+- Insira usuário, senha e nome do database conforme definido no compose.yaml.
+- Clique em Test Connection e depois em Apply.
+- Rode o banco de dados
 
 ### 4. Crie as variáveis de ambiente
 crie e configure as variavies de ambiente >
