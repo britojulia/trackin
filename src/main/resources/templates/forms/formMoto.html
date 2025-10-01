@@ -15,6 +15,7 @@
 
 <h1 class="text-2xl font-bold text-primary p-8" th:text="#{moto.new}"></h1>
 <main class="grid place-items-center gap-4 p-8">
+
     <form class="w-full max-w-md" method="post" th:action="@{/moto/formMoto}" th:object="${moto}">
 
         <input type="hidden" th:field="*{id}" />
@@ -46,11 +47,10 @@
         <fieldset class="fieldset">
             <legend class="fieldset-legend" th:text="#{moto.statusMoto}"></legend>
             <select th:field="*{statusMoto}" th:errorclass="select-error" class="select select-bordered">
-                <option th:each="status : ${statusMotos}" th:value="${status}" th:text="${status}"></option>
+                <option th:each="status : ${statusMoto}" th:value="${status}" th:text="${status}"></option>
             </select>
             <p class="label text-error" th:errors="*{statusMoto}"></p>
         </fieldset>
-
 
         <fieldset class="fieldset">
             <legend class="fieldset-legend" th:text="#{moto.rfidTag}"></legend>

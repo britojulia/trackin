@@ -48,7 +48,7 @@ public class ZonaPatioController {
     @PostMapping("/formZona")
     public String create(@Valid ZonaPatio zonaPatio, BindingResult result, RedirectAttributes redirect ){
 
-        if(result.hasErrors()) return "formZona";
+        if(result.hasErrors()) return "forms/formZona";
         zonaPatioService.save(zonaPatio);
         redirect.addFlashAttribute("message", messageHelper.get("message.success"));
         return "redirect:/zonaPatio"; //301
