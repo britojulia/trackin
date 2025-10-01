@@ -12,11 +12,7 @@
 - **Registro de Eventos**: Controle de eventos das motos (entrada, saída, manutenção) com timestamp e origem do registro (manual ou automático).  
 - **Rastreamento Visual**: Possibilidade de associar imagens de referência e detalhes visuais das motos.  
 - **Controle de Status Automático**: Na página inicial (dashboard), botões permitem **alterar automaticamente o status das motos** (como ATIVA, EM_MANUTENCAO, SAIDA) com um clique, facilitando o gerenciamento em tempo real.
-- 
-**Segurança**:
-- Autenticação via login e logout.
-- Diferenciação de perfis de usuário (administrador e usuário padrão).
-- Proteção de rotas com base no perfil do usuário.
+- **Segurança**: Autenticação via login e logout, Diferenciação de perfis de usuário (administrador e usuário padrão), Proteção de rotas com base no perfil do usuário.
   
 ---
 
