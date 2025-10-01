@@ -65,7 +65,7 @@ GOOGLE_SECRET = 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
 ## 🎥 Pitch e Demonstração da Solução
 
 * 🔗 Pitch: https://youtu.be/PCHSHT0CuMA
-* 🎮 Vídeo da solução completa: 
+* 🎮 Vídeo da solução completa: https://youtu.be/GWnuOH1HM7E
 
 ##  Desenvolvido por:
 Julia Brito, Leandro Correia, Victor Antonopoulos - 2TDSPG
