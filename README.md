@@ -8,7 +8,7 @@
 
 - **Gerenciamento de Pátios**: Cadastro de pátios com endereço, capacidade máxima e dimensões.  
 - **Gestão de Zonas**: Definição de áreas dentro dos pátios (estacionamento, manutenção, lavagem) com coordenadas e cores.  
-- **Cadastro de Motos**: Registro completo de motos, incluindo placa, modelo, ano, status, RFID, data de aquisição, última manutenção e características visuais.  
+- **CGerenciamento de Motos**: Gestão completa de motos,lidando com dados incluindo placa, modelo, ano, status, RFID, data de aquisição, última manutenção e características visuais.  
 - **Registro de Eventos**: Controle de eventos das motos (entrada, saída, manutenção) com timestamp e origem do registro (manual ou automático).  
 - **Rastreamento Visual**: Possibilidade de associar imagens de referência e detalhes visuais das motos.  
 - **Controle de Status Automático**: Na página inicial (dashboard), botões permitem **alterar automaticamente o status das motos** (como ATIVA, EM_MANUTENCAO, SAIDA) com um clique, facilitando o gerenciamento em tempo real.
