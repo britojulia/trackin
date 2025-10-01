@@ -53,7 +53,7 @@ public class PatioController {
 
     @PostMapping("/formPatio")
     public String create(@Valid Patio patio, BindingResult result, RedirectAttributes redirect ){
-        if(result.hasErrors()) return "formPatio";
+        if(result.hasErrors()) return "forms/formPatio";
         patioService.save(patio);
         redirect.addFlashAttribute("message", messageHelper.get("message.success"));
         return "redirect:/patio";

@@ -44,7 +44,7 @@
                         <span th:text="${zona.coordenadaFinalX}">0</span>,
                         <span th:text="${zona.coordenadaFinalY}">0</span>
                     </p>
-                    <p class="text-sm opacity-50">Cor: <span th:text="#{zonaPatio.cor}">#000000</span></p>
+                    <p class="text-sm opacity-50" th:text="${zona.cor}"> </p>
                 </div>
                 <div class="mt-4 flex justify-end">
                     <a th:href="@{'/zonaPatio/formZona/' + ${zona.id}}" class="btn btn-sm btn-ghost" th:text="#{edit}"></a>

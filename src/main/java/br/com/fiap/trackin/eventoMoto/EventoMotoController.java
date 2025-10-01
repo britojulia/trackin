@@ -55,7 +55,7 @@ public class EventoMotoController {
     @PostMapping("/formEvento")
     public String create(@Valid EventoMoto eventoMoto, BindingResult result, RedirectAttributes redirect ){
 
-        if(result.hasErrors()) return "formEvento";
+        if(result.hasErrors()) return "forms/formEvento";
         eventoMotoService.save(eventoMoto);
 
         redirect.addFlashAttribute("message", messageHelper.get("message.success"));
