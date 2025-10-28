@@ -49,10 +49,10 @@ cd trackin
 ### 4. Crie as variáveis de ambiente
 crie e configure as variavies de ambiente >
 ```bash
-GITHUB_ID = Ov23liYsKeiZN36Bhaw5
-GITHUB_SECRET = 4efe01a01be1f6d6b49b750021c74a52694e0875
-GOOGLE_ID = 616835644379-nd1mk6sivs9jtbv1j9i4sk8aoanajajc.apps.googleusercontent.com
-GOOGLE_SECRET = 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
+GITHUB_ID 
+GITHUB_SECRET
+GOOGLE_ID 
+GOOGLE_SECRET
 ````
 
 ### 5. Rode e acesse a aplicação
