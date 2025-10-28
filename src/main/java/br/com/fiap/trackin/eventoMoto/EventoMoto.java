@@ -1,6 +1,7 @@
 package br.com.fiap.trackin.eventoMoto;
 
 import br.com.fiap.trackin.enuns.TypesEnum;
+import br.com.fiap.trackin.moto.Moto;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
@@ -31,5 +32,11 @@ public class EventoMoto {
     @NotNull(message = "{evento.fonteEvento.notnull}")
     @Enumerated(EnumType.STRING)
     private TypesEnum.FonteEvento fonteEvento; //Sistema, Manual, VisaoComputacional, RFID
+
+    @ManyToOne
+    @NotNull(message = "{moto.eventoMoto.notnull}")
+    @JoinColumn(name = "moto_id")
+    private Moto moto;
+
 }
 
