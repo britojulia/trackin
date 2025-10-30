@@ -1,0 +1,5 @@
+ALTER TABLE evento_moto
+     ADD COLUMN moto_id INT;
+
+ALTER TABLE evento_moto
+    ADD CONSTRAINT FK_EVENTOMOTO_ON_MOTO FOREIGN KEY (moto_id) REFERENCES moto(id);

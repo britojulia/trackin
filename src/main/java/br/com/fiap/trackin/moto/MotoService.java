@@ -61,6 +61,7 @@ public class MotoService {
                 .timesTamp(LocalDateTime.now())
                 .observacao("Moto enviada para manutenção")
                 .fonteEvento(TypesEnum.FonteEvento.SISTEMA)
+                .moto(moto)
                 .build();
         eventoMotoService.save(evento);
     }
@@ -74,6 +75,7 @@ public class MotoService {
                 .timesTamp(LocalDateTime.now())
                 .observacao("Moto disponivel")
                 .fonteEvento(TypesEnum.FonteEvento.SISTEMA)
+                .moto(moto)
                 .build();
         eventoMotoService.save(evento);
     }
@@ -87,6 +89,7 @@ public class MotoService {
                 .timesTamp(LocalDateTime.now())
                 .observacao("Moto alugada")
                 .fonteEvento(TypesEnum.FonteEvento.SISTEMA)
+                .moto(moto)
                 .build();
         eventoMotoService.save(evento);
     }
