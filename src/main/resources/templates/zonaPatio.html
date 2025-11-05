@@ -46,11 +46,11 @@
                     </p>
                     <p class="text-sm opacity-50" th:text="${zona.cor}"> </p>
                 </div>
-                <div class="mt-4 flex justify-end">
-                    <a th:href="@{'/zonaPatio/formZona/' + ${zona.id}}" class="btn btn-sm btn-ghost" th:text="#{edit}"></a>
+                <div class="mt-4 flex justify-end gap-2"">
+                    <a th:href="@{'/zonaPatio/formZona/' + ${zona.id}}" class="btn btn-outline mb-4" th:text="#{edit}"></a>
                     <form method="post" th:action="${'/zonaPatio/' + zona.id}">
                         <input type="hidden" name="_method" value="DELETE" />
-                        <button class="btn btn-sm btn-ghost" th:text="#{delete}"></button>
+                        <button class="btn btn-outline mb-4 hover:bg-red-600" th:text="#{delete}"></button>
                     </form>
                 </div>
             </div>

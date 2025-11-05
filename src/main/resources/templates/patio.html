@@ -57,12 +57,12 @@
                     </div>
                 </div>
 
-                <div class="mt-4 flex justify-end">
+                <div class="mt-4 flex justify-end gap-2">
                     <a th:href="@{'/patio/formPatio/' + ${patio.id}}"
-                       class="btn btn-sm btn-ghost" th:text="#{edit}"></a>
+                       class="btn btn-outline mb-4" th:text="#{edit}"></a>
                     <form method="post" th:action="${'/patio/' + patio.id}">
                         <input type="hidden" name="_method" value="DELETE" />
-                        <button class="btn btn-sm btn-ghost" th:text="#{delete}"></button>
+                        <button class="btn btn-outline mb-4 hover:bg-red-600" th:text="#{delete}"></button>
                     </form>
                 </div>
             </div>
