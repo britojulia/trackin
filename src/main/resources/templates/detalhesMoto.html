@@ -1,10 +1,11 @@
 <!DOCTYPE html>
-<html lang="pt-br" data-theme="forest">
+<html lang="en" data-theme="forest">
 <head>
     <meta charset="UTF-8">
-    <title>Detalhes da Moto</title>
+    <title>Error</title>
     <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@5/themes.css" rel="stylesheet" type="text/css" />
 </head>
 <body class="flex flex-col min-h-screen">
 
@@ -12,52 +13,58 @@
 <div th:replace="~{fragments/layout :: header}"></div>
 
 <div class="container mx-auto p-6">
-    <a href="/dashboard" class="btn btn-outline mb-4">← Voltar</a>
+    <a href="/moto" class="btn btn-outline mb-4" th:text="#{back}"></a>
 
+    <!-- Card com infos da moto -->
     <div class="card bg-base-100 shadow-lg p-6">
-        <h1 class="text-2xl font-bold mb-4">Detalhes da Moto</h1>
+        <h1 class="text-2xl font-bold mb-4" th:text="#{moto.info}"></h1>
 
         <div class="grid grid-cols-2 gap-4">
-            <p><strong>Placa:</strong> <span th:text="${moto.placa}"></span></p>
-            <p><strong>Modelo:</strong> <span th:text="${moto.modelo}"></span></p>
-            <p><strong>Ano:</strong> <span th:text="${moto.ano}"></span></p>
-            <p><strong>RFID:</strong> <span th:text="${moto.rfidTag}"></span></p>
-            <p><strong>Status:</strong> <span th:text="${moto.statusMoto}"></span></p>
-            <p><strong>Última Manutenção:</strong> <span th:text="${moto.ultimaManutencao}"></span></p>
-            <p><strong>Características Visuais:</strong> <span th:text="${moto.caracteristicasVisuais}"></span></p>
-            <p><strong>Filial/Pátio:</strong> <span th:text="${moto.patio.nome}"></span></p>
+            <p><strong class="text-primary" th:text="#{moto.placa}"></strong> <span th:text="${moto.placa}"></span></p>
+            <p><strong class="text-primary" th:text="#{moto.modelo}"></strong> <span th:text="${moto.modelo}"></span></p>
+            <p><strong class="text-primary" th:text="#{moto.ano}"></strong> <span th:text="${moto.ano}"></span></p>
+            <p><strong class="text-primary" th:text="#{moto.rfidTag}"></strong> <span th:text="${moto.rfidTag}"></span></p>
+            <p><strong class="text-primary" th:text="#{moto.statusMoto}"></strong> <span th:text="${moto.statusMoto}"></span></p>
+            <p><strong class="text-primary" th:text="#{moto.dataAquisicao}"> </strong> <span th:text="${moto.dataAquisicao}"></span></p>
+            <p><strong class="text-primary" th:text="#{moto.ultimaManutencao}"></strong> <span th:text="${moto.ultimaManutencao}"></span></p>
+            <p><strong class="text-primary" th:text="#{moto.caracteristicasVisuais}"></strong> <span th:text="${moto.caracteristicasVisuais}"></span></p>
+            <p><strong class="text-primary" th:text="#{moto.patio}"></strong> <span th:text="${moto.patio.nome}"></span></p>
         </div>
     </div>
 
+    <!-- Card com histórico de eventos -->
     <div class="card bg-base-200 shadow-lg p-6 mt-6">
-        <h2 class="text-xl font-bold mb-4">Histórico de Eventos</h2>
+        <h2 class="text-xl font-bold mb-4" th:text="#{evento.title}">H</h2>
 
         <table class="table w-full">
             <thead>
             <tr>
-                <th>ID</th>
-                <th>Data</th>
-                <th>Tipo</th>
-                <th>Descrição</th>
+                <th class="text-primary" >ID</th>
+                <th class="text-primary" th:text="#{evento.data}"></th>
+                <th class="text-primary" th:text="#{evento.tipo}"></th>
+                <th class="text-primary" th:text="#{evento.fonte}"></th>
+                <th class="text-primary" th:text="#{evento.observacao}"></th>
             </tr>
             </thead>
             <tbody>
             <tr th:each="evento : ${eventos}">
                 <td th:text="${evento.id}"></td>
-                <td th:text="${evento.data}"></td>
+                <td th:text="${evento.timesTamp}"></td>
                 <td th:text="${evento.tipo}"></td>
-                <td th:text="${evento.descricao}"></td>
+                <td th:text="${evento.fonteEvento}"></td>
+                <td th:text="${evento.observacao}"></td>
             </tr>
             </tbody>
         </table>
 
         <div th:if="${#lists.isEmpty(eventos)}" class="text-center text-sm opacity-70 mt-4">
-            Nenhum evento registrado para esta moto.
+            <span th:text="#{message.evento.notFound}"></span>
         </div>
     </div>
 </div>
 
-<!-- Footer -->
-<div th:replace="~{fragments/footer :: footer}"></div>
+    <!-- Footer -->
+    <div th:replace="~{fragments/footer :: footer}"></div>
+
 </body>
 </html>

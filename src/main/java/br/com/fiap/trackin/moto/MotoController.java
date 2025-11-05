@@ -57,15 +57,16 @@ public class MotoController {
         return "forms/formMoto";
     }
 
-    @GetMapping("/moto/{id}")
-    public String detalhesMoto(@PathVariable Long id, Model model) {
+    @GetMapping("/{id}")
+    public String detalhesMoto(@PathVariable Long id, Model model, @AuthenticationPrincipal OAuth2User user) {
         Moto moto = motoService.getMoto(id);
         List<EventoMoto> eventos = eventoMotoService.getEventosByMoto(id);
 
         model.addAttribute("moto", moto);
         model.addAttribute("eventos", eventos);
+        model.addAttribute("user", user);
 
-        return "moto/detalhesMoto"; // nome da nova view
+        return "detalhesMoto";
     }
 
 

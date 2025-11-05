@@ -65,36 +65,71 @@
                         <span th:text="'ID patio: ' + ${moto.patio.id}"></spam> </span>
                     </p>
                     <p class="py-1 text-xs uppercase font-semibold opacity-60">
-                        <span th:text="${moto.caracteristicasVisuais}"></span> |
-                        <span th:text="${moto.dataAquisicao}"></span> |
-                        <span th:text="${moto.rfidTag}"></span> |
-                        <span th:text="${moto.statusMoto}"></span> |
+                        <span th:text="#{moto.ultimaManutencao}"></span>:
                         <span th:text="${moto.ultimaManutencao}"></span>
                     </p>
                 </div>
-                <div class="flex gap-2">
-                    <form method="post" th:action="@{'/moto/manutencao/' + ${moto.id}}">
-                        <input type="hidden" name="_method" value="PUT" />
-                        <button class="btn btn-neutral" th:text="#{moto.status.manutencao}"></button>
-                    </form>
-                    <form method="post" th:action="@{'/moto/disponivel/' + ${moto.id}}">
-                        <input type="hidden" name="_method" value="PUT" />
-                        <button class="btn btn-neutral" th:text="#{moto.status.disponivel}"></button>
-                    </form>
-                    <form method="post" th:action="@{'/moto/alugada/' + ${moto.id}}">
-                        <input type="hidden" name="_method" value="PUT" />
-                        <button class="btn btn-neutral" th:text="#{moto.status.alugada}"></button>
-                    </form>
-                    <a th:href="@{'/moto/formMoto/' + ${moto.id}}" class="btn btn-sm btn-ghost" th:text="#{edit}"></a>
-                    <a th:href="@{'/moto/' + ${moto.id}}" class="btn btn-sm btn-info">
-                        Ver detalhes
-                    </a>
 
-                    <form method="post" th:action="${'/moto/' + moto.id}">
-                        <input type="hidden" name="_method" value="DELETE" />
-                        <button class="btn btn-sm btn-ghost" th:text="#{delete}"></button>
-                    </form>
+
+                <div class="flex justify-end gap-4 mt-4">
+                    <!-- Dropdown de Status -->
+                    <div class="dropdown dropdown-end">
+                        <button tabindex="0" class="btn btn-neutral" th:text="#{status}"></button>
+                        <ul tabindex="0" class="dropdown-content menu bg-base-100 rounded-box z-[1] w-52 p-2 shadow">
+                            <li>
+                                <form method="post" th:action="@{'/moto/manutencao/' + ${moto.id}}">
+                                    <input type="hidden" name="_method" value="PUT" />
+                                    <button class="  font-semibold hover:text-yellow-800">
+                                        🛠️ <span th:text="#{moto.status.manutencao}"></span>
+                                    </button>
+                                </form>
+                            </li>
+                            <li>
+                                <form method="post" th:action="@{'/moto/disponivel/' + ${moto.id}}">
+                                    <input type="hidden" name="_method" value="PUT" />
+                                    <button class=" font-semibold hover:text-green-800">
+                                        ✅ <span th:text="#{moto.status.disponivel}"></span>
+                                    </button>
+                                </form>
+                            </li>
+                            <li>
+                                <form method="post" th:action="@{'/moto/alugada/' + ${moto.id}}">
+                                    <input type="hidden" name="_method" value="PUT" />
+                                    <button class=" font-semibold hover:text-blue-800">
+                                        🚚 <span th:text="#{moto.status.alugada}"></span>
+                                    </button>
+                                </form>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Dropdown de Ações -->
+                    <div class="dropdown dropdown-end">
+                        <button tabindex="0" class="btn btn-outline" th:text="#{actions}"></button>
+                        <ul tabindex="0" class="dropdown-content menu bg-base-100 rounded-box z-[1] w-48 p-2 shadow">
+                            <li>
+                                <a th:href="@{'/moto/formMoto/' + ${moto.id}}" class="font-semibold hover:text-blue-800">
+                                     <span th:text="#{edit}"></span>
+                                </a>
+                            </li>
+                            <li>
+                                <a th:href="@{'/moto/' + ${moto.id}}" class="font-semibold hover:text-yellow-800">
+                                    <span th:text="#{details}"></span>
+                                </a>
+                            </li>
+                            <li>
+                                <form method="post" th:action="${'/moto/' + moto.id}">
+                                    <input type="hidden" name="_method" value="DELETE" />
+                                    <button class="font-semibold hover:text-red-800">
+                                        🗑️ <span th:text="#{delete}"></span>
+                                    </button>
+                                </form>
+                            </li>
+                        </ul>
+                    </div>
+
                 </div>
+
             </li>
         </ul>
     </div>
