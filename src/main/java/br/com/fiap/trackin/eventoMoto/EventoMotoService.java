@@ -32,6 +32,11 @@ public class EventoMotoService {
     }
 
 
+    public List<EventoMoto> getEventosByMoto(Long motoId) {
+        return eventoMotoRepository.findByMotoId(motoId);
+    }
+
+
     public EventoMoto getEvento(Long id){
         return eventoMotoRepository.findById(id).orElseThrow(
                 () -> new EntityNotFoundException(messageHelper.get("message.notFound"))

@@ -86,6 +86,10 @@
                         <button class="btn btn-neutral" th:text="#{moto.status.alugada}"></button>
                     </form>
                     <a th:href="@{'/moto/formMoto/' + ${moto.id}}" class="btn btn-sm btn-ghost" th:text="#{edit}"></a>
+                    <a th:href="@{'/moto/' + ${moto.id}}" class="btn btn-sm btn-info">
+                        Ver detalhes
+                    </a>
+
                     <form method="post" th:action="${'/moto/' + moto.id}">
                         <input type="hidden" name="_method" value="DELETE" />
                         <button class="btn btn-sm btn-ghost" th:text="#{delete}"></button>

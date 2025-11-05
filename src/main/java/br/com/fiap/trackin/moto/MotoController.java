@@ -2,6 +2,7 @@ package br.com.fiap.trackin.moto;
 
 import br.com.fiap.trackin.config.MessageHelper;
 import br.com.fiap.trackin.enuns.TypesEnum;
+import br.com.fiap.trackin.eventoMoto.EventoMoto;
 import br.com.fiap.trackin.eventoMoto.EventoMotoService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -14,6 +15,8 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
+import java.util.List;
 
 @Controller
 @RequestMapping("/moto")
@@ -53,6 +56,18 @@ public class MotoController {
         model.addAttribute("statusMoto", TypesEnum.StatusMoto.values());
         return "forms/formMoto";
     }
+
+    @GetMapping("/moto/{id}")
+    public String detalhesMoto(@PathVariable Long id, Model model) {
+        Moto moto = motoService.getMoto(id);
+        List<EventoMoto> eventos = eventoMotoService.getEventosByMoto(id);
+
+        model.addAttribute("moto", moto);
+        model.addAttribute("eventos", eventos);
+
+        return "moto/detalhesMoto"; // nome da nova view
+    }
+
 
     @PostMapping("/formMoto")
     public String create(@Valid Moto moto, BindingResult result, RedirectAttributes redirect ){

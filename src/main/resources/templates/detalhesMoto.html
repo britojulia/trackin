@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="pt-br" data-theme="forest">
+<head>
+    <meta charset="UTF-8">
+    <title>Detalhes da Moto</title>
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+</head>
+<body class="flex flex-col min-h-screen">
+
+<!-- Header -->
+<div th:replace="~{fragments/layout :: header}"></div>
+
+<div class="container mx-auto p-6">
+    <a href="/dashboard" class="btn btn-outline mb-4">← Voltar</a>
+
+    <div class="card bg-base-100 shadow-lg p-6">
+        <h1 class="text-2xl font-bold mb-4">Detalhes da Moto</h1>
+
+        <div class="grid grid-cols-2 gap-4">
+            <p><strong>Placa:</strong> <span th:text="${moto.placa}"></span></p>
+            <p><strong>Modelo:</strong> <span th:text="${moto.modelo}"></span></p>
+            <p><strong>Ano:</strong> <span th:text="${moto.ano}"></span></p>
+            <p><strong>RFID:</strong> <span th:text="${moto.rfidTag}"></span></p>
+            <p><strong>Status:</strong> <span th:text="${moto.statusMoto}"></span></p>
+            <p><strong>Última Manutenção:</strong> <span th:text="${moto.ultimaManutencao}"></span></p>
+            <p><strong>Características Visuais:</strong> <span th:text="${moto.caracteristicasVisuais}"></span></p>
+            <p><strong>Filial/Pátio:</strong> <span th:text="${moto.patio.nome}"></span></p>
+        </div>
+    </div>
+
+    <div class="card bg-base-200 shadow-lg p-6 mt-6">
+        <h2 class="text-xl font-bold mb-4">Histórico de Eventos</h2>
+
+        <table class="table w-full">
+            <thead>
+            <tr>
+                <th>ID</th>
+                <th>Data</th>
+                <th>Tipo</th>
+                <th>Descrição</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="evento : ${eventos}">
+                <td th:text="${evento.id}"></td>
+                <td th:text="${evento.data}"></td>
+                <td th:text="${evento.tipo}"></td>
+                <td th:text="${evento.descricao}"></td>
+            </tr>
+            </tbody>
+        </table>
+
+        <div th:if="${#lists.isEmpty(eventos)}" class="text-center text-sm opacity-70 mt-4">
+            Nenhum evento registrado para esta moto.
+        </div>
+    </div>
+</div>
+
+<!-- Footer -->
+<div th:replace="~{fragments/footer :: footer}"></div>
+</body>
+</html>
