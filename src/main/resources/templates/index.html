@@ -73,8 +73,10 @@
 
                 <div class="flex justify-end gap-4 mt-4">
                     <!-- Dropdown de Status -->
-                    <div class="dropdown dropdown-end">
-                        <button tabindex="0" class="btn btn-neutral" th:text="#{status}"></button>
+                    <div class="dropdown dropdown-top dropdown-end">
+                        <button tabindex="0" class="btn btn-neutral">
+                            ^ <span th:text="#{status}"></span>
+                        </button>
                         <ul tabindex="0" class="dropdown-content menu bg-base-100 rounded-box z-[1] w-52 p-2 shadow">
                             <li>
                                 <form method="post" th:action="@{'/moto/manutencao/' + ${moto.id}}">
@@ -96,7 +98,7 @@
                                 <form method="post" th:action="@{'/moto/alugada/' + ${moto.id}}">
                                     <input type="hidden" name="_method" value="PUT" />
                                     <button class=" font-semibold hover:text-blue-800">
-                                        🚚 <span th:text="#{moto.status.alugada}"></span>
+                                        🏍️ <span th:text="#{moto.status.alugada}"></span>
                                     </button>
                                 </form>
                             </li>
@@ -104,8 +106,10 @@
                     </div>
 
                     <!-- Dropdown de Ações -->
-                    <div class="dropdown dropdown-end">
-                        <button tabindex="0" class="btn btn-outline" th:text="#{actions}"></button>
+                    <div class="dropdown dropdown-top dropdown-end">
+                        <button tabindex="0" class="btn btn-outline" >
+                            ^ <span th:text="#{actions}"></span>
+                        </button>
                         <ul tabindex="0" class="dropdown-content menu bg-base-100 rounded-box z-[1] w-48 p-2 shadow">
                             <li>
                                 <a th:href="@{'/moto/formMoto/' + ${moto.id}}" class="font-semibold hover:text-blue-800">
@@ -121,7 +125,7 @@
                                 <form method="post" th:action="${'/moto/' + moto.id}">
                                     <input type="hidden" name="_method" value="DELETE" />
                                     <button class="font-semibold hover:text-red-800">
-                                        🗑️ <span th:text="#{delete}"></span>
+                                         <span th:text="#{delete}"></span>
                                     </button>
                                 </form>
                             </li>
