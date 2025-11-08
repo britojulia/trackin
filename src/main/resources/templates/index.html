@@ -122,7 +122,10 @@
                                 </a>
                             </li>
                             <li>
-                                <form method="post" th:action="${'/moto/' + moto.id}">
+                                <form method="post"
+                                      th:action="${'/moto/' + moto.id}"
+                                      th:attr="data-confirm=#{deleteMoto.confirm}"
+                                      onsubmit="return confirm(this.getAttribute('data-confirm'))">
                                     <input type="hidden" name="_method" value="DELETE" />
                                     <button class="font-semibold hover:text-red-800">
                                          <span th:text="#{delete}"></span>

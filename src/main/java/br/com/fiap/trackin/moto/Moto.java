@@ -1,6 +1,7 @@
 package br.com.fiap.trackin.moto;
 
 import br.com.fiap.trackin.enuns.TypesEnum;
+import br.com.fiap.trackin.eventoMoto.EventoMoto;
 import br.com.fiap.trackin.patio.Patio;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
@@ -11,6 +12,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Data
@@ -50,6 +53,9 @@ public class Moto {
 
     @Lob
     private String caracteristicasVisuais; //JSON da foto será como string
+
+    @OneToMany(mappedBy = "moto", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<EventoMoto> eventos = new ArrayList<>();
 
 }
 
