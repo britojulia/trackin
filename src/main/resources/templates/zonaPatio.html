@@ -46,7 +46,7 @@
                     </p>
                     <p class="text-sm opacity-50" th:text="${zona.cor}"> </p>
                 </div>
-                <div class="mt-4 flex justify-end gap-2"">
+                <div class="mt-4 flex justify-end gap-2">
                     <a th:href="@{'/zonaPatio/formZona/' + ${zona.id}}" class="btn btn-outline mb-4" th:text="#{edit}"></a>
                     <form method="post" th:action="${'/zonaPatio/' + zona.id}">
                         <input type="hidden" name="_method" value="DELETE" />
