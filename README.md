@@ -29,7 +29,15 @@
 ---
 
 ## 🚀 Execução do Projeto (IntelliJ + Docker)
+### Deploy
+### 1. A aplicação está disponível em:
+```bash
+https://trackin-m2y2.onrender.com/login
+```
+> Não é necessário configurar variáveis de ambiente localmente, elas já devem estar definidas.
 
+
+### Localmente
 ### 1. Clone o repositório
 ```bash
 git clone https://github.com/britojulia/trackin.git
@@ -65,7 +73,7 @@ GOOGLE_SECRET
 ## 🎥 Pitch e Demonstração da Solução
 
 * 🔗 Pitch: https://youtu.be/PCHSHT0CuMA
-* 🎮 Vídeo da solução completa: https://youtu.be/GWnuOH1HM7E
+* 🎮 Vídeo da solução completa: 
 
 ##  Desenvolvido por:
 Julia Brito, Leandro Correia, Victor Antonopoulos - 2TDSPG
