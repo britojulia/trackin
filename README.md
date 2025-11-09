@@ -73,7 +73,7 @@ GOOGLE_SECRET
 ## 🎥 Pitch e Demonstração da Solução
 
 * 🔗 Pitch: https://youtu.be/PCHSHT0CuMA
-* 🎮 Vídeo da solução completa: 
+* 🎮 Vídeo da solução completa: https://www.youtube.com/watch?v=PGCS_PrYx7c
 
 ##  Desenvolvido por:
 Julia Brito, Leandro Correia, Victor Antonopoulos - 2TDSPG
